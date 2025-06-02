@@ -82,28 +82,22 @@
           "label": "Description"
         },
         {
-          "component": "aem-content",
+          "component": "text",
           "valueType": "string",
-          "name": "carouselButton1",
-          "label": "Button1 Link"
+          "name": "cardtext2",
+          "label": "PublisherName"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "carouselButton1Text",
-          "label": "Button1 Text"
-        },
-        {
-          "component": "aem-content",
-          "valueType": "string",
-          "name": "carouselButton2",
-          "label": "Button2 Link"
+          "name": "publisherdate",
+          "label": "Publisher Date"
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "carouselButton2Text",
-          "label": "Button2 Text"
+          "name": "publisherrating",
+          "label": "Rating"
         },
         {
           "component": "reference",

@@ -50,6 +50,13 @@
           "label": "Heading"
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "publisheddate",
+          "value": "",
+          "label": "Published Date"
+        },
+        {
           "component": "richtext",
           "name": "text",
           "value": "",

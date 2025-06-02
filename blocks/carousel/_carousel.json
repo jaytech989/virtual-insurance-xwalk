@@ -82,35 +82,28 @@
           "label": "Description"
         },
         {
-          "component": "aem-content",
+          "component": "reference",
           "valueType": "string",
-          "name": "carouselButton1",
-          "label": "Button1 Link"
+          "name": "carouselimg",
+          "label": "Carousel Image 1"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "carouselButton1Text",
-          "label": "Button1 Text"
+          "label": "Published Date"
         },
         {
-          "component": "aem-content",
+          "component": "text",
           "valueType": "string",
-          "name": "carouselButton2",
-          "label": "Button2 Link"
+          "name": "caroselprofilename",
+          "label": "Text"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "carouselButton2Text",
-          "label": "Button2 Text"
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "fileReference",
-          "label": "Image",
-          "multi": false
+          "label": "Ratings"
         }
       ]
     }

@@ -33,6 +33,12 @@
     ]
   },
   {
+    "id": "card",
+    "components": [
+      "button"
+    ]
+  },
+  {
     "id": "carousel",
     "components": [
       "carousel-item"

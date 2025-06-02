@@ -55,6 +55,22 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "value": "",
+          "label": "CTA Text",
+          "description": "Text to be shown inside button."
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "ctalink",
+          "value": "",
+          "label": "CTA Link",
+          "description": "What link to open when clicking the button."
         }
       ]
     }
@@ -64,6 +80,12 @@
       "id": "cards",
       "components": [
         "card"
+      ]
+    },
+    {
+      "id": "card",
+      "components": [
+        "button"
       ]
     }
   ]

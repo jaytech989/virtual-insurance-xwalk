@@ -181,6 +181,22 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "value": "",
+        "label": "CTA Text",
+        "description": "Text to be shown inside button."
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctalink",
+        "value": "",
+        "label": "CTA Link",
+        "description": "What link to open when clicking the button."
       }
     ]
   },
@@ -193,6 +209,38 @@
         "name": "carouselTitle",
         "value": "Title",
         "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "carouselTitleType",
+        "label": "Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
       },
       {
         "component": "richtext",

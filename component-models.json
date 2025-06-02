@@ -142,6 +142,23 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -164,6 +181,56 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "carousel-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "carouselTitle",
+        "value": "Title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "carouselDescription",
+        "value": "Description",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "carouselButton1",
+        "label": "Button1 Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "carouselButton1Text",
+        "label": "Button1 Text"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "carouselButton2",
+        "label": "Button2 Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "carouselButton2Text",
+        "label": "Button2 Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "Image",
+        "multi": false
       }
     ]
   },

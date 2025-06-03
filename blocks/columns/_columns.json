@@ -9,7 +9,8 @@
             "resourceType": "core/franklin/components/columns/v1/columns",
             "template": {
               "columns": "2",
-              "rows": "1"
+              "rows": "1",
+              "classes": ["column-container"]
             }
           }
         }
@@ -40,9 +41,7 @@
   "filters": [
     {
       "id": "columns",
-      "components": [
-        "column"
-      ]
+      "components": ["column", "custom-cards-container","accordian","innvest-calculator","cards-with-paragraph","card-with-paragraph"]
     },
     {
       "id": "column",
@@ -50,7 +49,20 @@
         "text",
         "image",
         "button",
-        "title"
+        "title",
+        "cards",
+        "card",
+        "customcards",
+        "customcard",
+        "custom-cards-container",
+        "accordian",
+        "innvest-calculator",
+        "gender-section",
+        "inputform",
+        "text-with-image",
+        "cards-with-paragraph",
+        "card-with-paragraph"
+
       ]
     }
   ]

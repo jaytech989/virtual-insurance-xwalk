@@ -70,30 +70,114 @@ function bindEvents(block) {
   });
 }
 
+// function createSlide(row, slideIndex, carouselId) {
+
+//   const slide = document.createElement('li');
+//   slide.dataset.slideIndex = slideIndex;
+//   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
+//   slide.classList.add('carousel-slide');
+//   moveInstrumentation(row, slide);
+
+//   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
+//     column.classList.add(`carousel-slide-${colIdx === 0 ? 'content' : 'image'}`);
+//     if (colIdx === 0 || colIdx === 4) {
+//       slide.append(column);
+//     } else {
+//       const firstSlideContent = slide.querySelector('.carousel-slide-content');
+//       firstSlideContent.append(column);
+//     }
+//   });
+
+//   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
+//   if (labeledBy) {
+//     slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+//   }
+
+//   return slide;
+// }
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
-  slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
+  slide.id = `carousel-${carouselId}-slide-${slideIndex}`;
   slide.classList.add('carousel-slide');
+
   moveInstrumentation(row, slide);
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-slide-${colIdx === 0 ? 'content' : 'image'}`);
-    if (colIdx === 0 || colIdx === 4) {
-      slide.append(column);
-    } else {
-      const firstSlideContent = slide.querySelector('.carousel-slide-content');
-      firstSlideContent.append(column);
+  const contentWrapper = document.createElement('div');
+  contentWrapper.className = 'carousel-slide-content';
+
+  const metaWrapper = document.createElement('div');
+  metaWrapper.className = 'carousel-meta';
+
+  row.querySelectorAll(':scope > div').forEach((column, index) => {
+    let className = '';
+
+    switch (index) {
+      case 0:
+        className = 'carousel-heading';
+        column.className = className;
+        contentWrapper.append(column);
+        break;
+
+      case 1:
+        className = 'carousel-description';
+        column.className = className;
+        contentWrapper.append(column);
+        break;
+
+      case 2:
+        className = 'carousel-pubname';
+        column.className = className;
+        contentWrapper.append(column);
+        break;
+
+      case 3:
+        className = 'carousel-date';
+        column.className = className;
+        metaWrapper.append(column);
+        break;
+
+      case 4:
+        className = 'carousel-rating';
+        column.className = className;
+        metaWrapper.append(column);
+        break;
+
+      case 5:
+        className = 'carousel-image';
+        const picture = column.querySelector('picture');
+        if (picture) {
+          picture.className = className;
+          metaWrapper.append(picture); // only the picture element, not the whole div
+        }
+        break;
+
+      default:
+        className = 'carousel-content-extra';
+        column.className = className;
+        contentWrapper.append(column);
+        break;
     }
   });
 
-  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
+  // Append the meta wrapper if it has any content
+  if (metaWrapper.children.length > 0) {
+    contentWrapper.append(metaWrapper);
+  }
+
+  slide.append(contentWrapper);
+
+  // Set ARIA label
+  const labeledBy = contentWrapper.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {
-    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+    slide.setAttribute('aria-labelledby', labeledBy.id || `carousel-slide-title-${slideIndex}`);
+    if (!labeledBy.id) labeledBy.id = `carousel-slide-title-${slideIndex}`;
   }
 
   return slide;
 }
+
+
 
 let carouselId = 0;
 export default async function decorate(block) {

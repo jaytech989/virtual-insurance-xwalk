@@ -456,11 +456,6 @@ main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>
         width: auto;
     }
 
-    .section.lets-go-card .button-container {
-        top: 168%;
-        right: 28%;
-    }
-
     .section.settlement-card.columns-container {
         flex-direction: column;
         margin-top: 200px;
@@ -520,4 +515,14 @@ main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>
     main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph {
         flex-direction: column;
     }
+.section.lets-go-card .button-container{
+    position: unset;
+    margin: 0;
+    text-align: center;
+}
+
+
+.section.certified-card.columns-container > div > div > div > div.columns-img-col > picture > img{
+    width: 100% !important;
+}
 }

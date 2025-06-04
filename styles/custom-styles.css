@@ -383,7 +383,7 @@ main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>
 }
 
 .section.people-search-buttons.columns-container>div>div>div>div:nth-child(1)>p img {
-    width: 30px;
+    width: 30px !important;
 }
 
 .section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) {
@@ -524,5 +524,16 @@ main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>
 
 .section.certified-card.columns-container > div > div > div > div.columns-img-col > picture > img{
     width: 100% !important;
+}
+
+.section.lets-go-card .default-content-wrapper p:nth-child(3){
+    top:auto;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) .button-container a{
+    width: 100%;
+}
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) .button-container {
+    width: 100%;
 }
 }

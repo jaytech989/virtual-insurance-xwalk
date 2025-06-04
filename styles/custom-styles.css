@@ -1,0 +1,518 @@
+main .section.most-pop {
+    padding: 1rem 2rem 2rem;
+    margin: 0.4% 3.5% 1% 3.5%;
+    background-color: #F4FAFF;
+    border-radius: 1rem;
+}
+
+main .section.most-pop>.columns-wrapper {
+
+    max-width: 100%;
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div {
+
+    /* background-color: aqua; */
+    position: relative;
+    margin-right: 0;
+    padding-right: 1rem;
+    width: calc(50% - 2rem);
+
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div::before {
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 32px;
+    position: absolute;
+    right: -0.5rem;
+    content: "";
+    width: 1px;
+    height: 150px;
+    background-color: #7F7F7F;
+    opacity: 0.5;
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols div>div>p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000000;
+    /* font-family: Manrope-Bold; */
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph {
+
+    display: flex;
+    justify-content: center;
+}
+
+
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div {
+    height: 50%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    /* display: flex
+; */
+    width: calc(33.3333333333% - 1.5rem);
+    border: 1px solid #D9D9D9;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    background-color: #ffffff;
+    /* border-radius: 0.25rem; */
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+    color: #002b47;
+    max-width: 100%;
+    position: relative;
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div>div>picture>img,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>div>picture>img {
+
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    width: 32px;
+    height: 32px;
+
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div>div>div,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>div>div {
+
+    font-size: 1rem;
+    color: #094771;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div>div>div>div,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>div>div>div {
+
+    background-color: #E6F0FA;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.625rem;
+    /* font-size: 1rem; */
+    /* color: #094771; */
+    /* font-weight: 600; */
+    /* transition: all 0.3s ease-in-out; */
+
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards>div {
+    width: calc(25% - 1.5rem);
+    text-align: center;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+}
+
+main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards>div>div:first-child {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem;
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+}
+
+
+.section.most-pop.columns-container .cards-with-paragraph>div,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div {
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+    color: #002b47;
+    max-width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.section.most-pop.columns-container .columns.block.columns-2-cols>div>div>div>p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.section.most-pop.columns-container .cards-with-paragraph>div:hover,
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div:hover {
+    transform: translateY(-3px);
+}
+
+.section.most-pop>.columns-wrapper>.columns-2-cols div>div>p:nth-child(1) {
+    font-size: 1rem;
+    margin: 0;
+    color: #094771;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.section.most-pop>.columns-wrapper>.columns-2-cols div>div>p:nth-child(2) {
+    font-size: 0.75rem;
+    /* font-family: Manrope-Light; */
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.section.most-pop.columns-container .cards-with-paragraph>div>div:nth-child(3),
+main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>div:nth-child(3) {
+    background-color: #E6F0FA;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 12px;
+    margin-bottom: 0;
+    line-height: 1.5;
+    transition: all 0.3s ease-in-out;
+    /* font-family: Manrope; */
+    font-weight: 300;
+}
+
+.section.most-pop.columns-container>div>div>div>div:nth-child(2)>div.cards>div>div:nth-child(2) {
+    transition: all 0.3s ease-in-out 0.1s;
+    /* font-family: Manrope-Semibold; */
+    color: #094771;
+}
+
+.section.most-pop.columns-container>div>div>div>div>div.cards>div:hover {
+    transform: translateY(-3px);
+}
+
+.section.lets-go-card .default-content-wrapper {
+    position: relative;
+}
+
+.section.lets-go-card .button-container {
+    position: absolute;
+    top: 18%;
+    right: 8%;
+}
+
+.section.lets-go-card .button-container a {
+    border: none;
+    background-color: #153050;
+    border-radius: 8px;
+    padding: 18px 44px;
+    box-shadow: 0 9px 17px 0 rgba(38, 133, 245, 0.28);
+}
+
+.section.lets-go-card .default-content-wrapper p:nth-child(3) {
+    top: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.section.settlement-card.columns-container {
+    display: flex;
+    position: relative;
+    padding-top: 2.5rem;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+    /* color: #002b47; */
+    border-radius: 1.5rem;
+    /* max-width: 1230px; */
+    background-color: #fff;
+    margin: 160px 32px;
+    position: relative;
+}
+
+.section.settlement-card.columns-container::after {
+    background-color: #F4FAFF;
+    border-bottom-left-radius: 4rem;
+    border-top-right-radius: 4rem;
+    content: "";
+    display: block;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    transform: skewY(-5deg) translateY(-50%);
+    width: 100%;
+    z-index: -1;
+}
+
+.section.settlement-card.columns-container .default-content-wrapper p:nth-child(2) {
+    top: -70px;
+    position: absolute;
+    right: 46%;
+}
+
+.section.settlement-card.columns-container .columns-wrapper {
+    text-align: center;
+}
+
+
+.section.settlement-card.columns-container .columns-wrapper p {
+    font-size: 1.75rem;
+    color: #094771;
+}
+
+.section.settlement-card.columns-container .columns-wrapper h1 {
+    color: #E52D12;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    font-size: 2.813rem;
+}
+
+.section.settlement-card.columns-container .columns-wrapper .button-container a {
+    border: none;
+    background-color: #153050;
+    border-radius: 8px;
+    padding: 16px 42px;
+    box-shadow: 0 9px 17px 0 rgba(38, 133, 245, 0.28);
+    letter-spacing: 0.22px;
+    font-size: 22px;
+}
+
+.section.certified-card.columns-container {
+    padding: 2rem 2.25rem;
+    border-radius: 1rem;
+    background-color: #f4faff;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+    /* color: #002b47; */
+    max-width: 100%;
+    margin: 50px 32px;
+}
+
+.section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1)>div {
+    text-align: center;
+    padding-left: 13rem;
+    font-size: 1.25rem;
+}
+
+.section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1)>div p {
+    color: #E52D12;
+    /* font-family: Manrope-Bold; */
+    font-weight: 700;
+    margin: 0;
+}
+
+.section.certified-card.columns-container .cq-placeholder {
+    display: none;
+}
+
+
+.default-content-wrapper h1 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.section.smart-cal.cards-with-paragraph-container .cards-with-paragraph-wrapper {
+    width: 56%
+}
+
+.section.smart-cal.cards-with-paragraph-container .cards-with-paragraph-wrapper .cards-with-paragraph>div>div>picture>img {
+    width: 52px;
+    height: 52px;
+}
+
+.section.smart-cal.cards-with-paragraph-container .cards-with-paragraph-wrapper .cards-with-paragraph>div>div>div {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.section.accordion-group-container .default-content-wrapper h1 {
+    margin-bottom: 60px;
+}
+
+.section.ban-why-choose-model.ban-why-choose-model-section.cards-container .default-content-wrapper .button-container {
+    text-align: center;
+}
+
+.section.ban-why-choose-model.ban-why-choose-model-section.cards-container .default-content-wrapper .button-container a {
+    border: none;
+    background-color: #153050;
+    border-radius: 8px;
+    padding: 16px 42px;
+    box-shadow: 0 9px 17px 0 rgba(38, 133, 245, 0.28);
+    letter-spacing: 0.22px;
+    font-size: 22px;
+}
+
+.section.people-search-buttons.columns-container .columns-wrapper>div>div {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+    color: #002b47;
+    max-width: 100%;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(1) {
+    display: flex;
+    gap: 15px;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(1)>p img {
+    width: 30px;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) .button-container {
+    margin: 0;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) .button-container a {
+    color: #153050;
+    display: inline-block;
+    margin: 0;
+    border: 2px solid #D9D9D9;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 18px 44px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.section.people-search-buttons.columns-container>div>div>div>div:nth-child(2) .button-container a:hover {
+    color: #fff;
+    background-color: #153050;
+
+}
+
+.section.smart-cal.mail-us-card.cards-with-paragraph-container {
+    margin-top: 80px;
+}
+
+/* .section.smart-cal.mail-us-card.cards-with-paragraph-container::after{
+    background-color: #F4FAFF;
+    border-top-right-radius: 4rem;
+    content: "";
+    display: block;
+    height: 740px;
+    position: absolute;
+    transform: skewY(-5deg) translateY(-50%);
+    width: 100%;
+    z-index: -1;
+} */
+
+.section.smart-cal.mail-us-card.cards-with-paragraph-container .default-content-wrapper {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.section.ban-why-choose-model.ban-why-choose-model-section.cards-container button {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .section.most-pop.columns-container .cards-with-paragraph>div,
+    main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div {
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .section.smart-cal.cards-with-paragraph-container .cards-with-paragraph-wrapper {
+        width: auto;
+    }
+
+    .section.lets-go-card .button-container {
+        top: 168%;
+        right: 28%;
+    }
+
+    .section.settlement-card.columns-container {
+        flex-direction: column;
+        margin-top: 200px;
+
+    }
+
+    .section.settlement-card.columns-container .default-content-wrapper p:nth-child(2) {
+        right: 31%;
+    }
+
+    .section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1) {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+    }
+
+    .section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1)>div {
+        padding-left: 0;
+    }
+
+    .main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .main .section.most-pop {
+        padding: 0;
+        margin: 0;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div {
+        width: auto;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div,
+    main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div {
+        width: 100%;
+        margin-bottom: 20px;
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards {
+        justify-content: space-around;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards>div>div:first-child{
+        width: 58px;
+    height: 50px;
+        align-items: flex-end;
+    }
+
+    .section.most-pop.columns-container>div>div>div>div:nth-child(2)>div.cards>div>div:nth-child(2){
+        font-size: 12px;
+    }
+}

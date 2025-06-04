@@ -1,0 +1,28 @@
+@import '../accordion/accordion.css';
+
+/* inside accordion group we can have text below first div */
+.accordion-group>.accordion details div {
+  font-size: var(--exlm-font-size-content);
+  line-height: var(--exlm-line-height-h4);
+  margin-left: 14px;
+  margin-top: 14px;
+  margin: 0px;
+    padding-bottom: 20px;
+}
+
+/* override /docs font size */
+.accordion-group>.accordion details summary {
+  font-size: var(--spectrum-font-size-200);
+  line-height: var(--exlm-line-height-h4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-group>.accordion details summary{
+    align-items: flex-end;
+  }
+}

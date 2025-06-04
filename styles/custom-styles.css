@@ -476,12 +476,43 @@ main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div>
         justify-content: space-between;
     }
 
-    .section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1)>div{
+    .section.certified-card.columns-container>.columns-wrapper>div>div:nth-child(1)>div {
         padding-left: 0;
     }
 
-    .main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div{
+    .main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div {
         width: 100%;
+        font-size: 12px;
+    }
+
+    .main .section.most-pop {
+        padding: 0;
+        margin: 0;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div {
+        width: auto;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols .cards-with-paragraph>div,
+    main .section.smart-cal>.cards-with-paragraph-wrapper .cards-with-paragraph>div {
+        width: 100%;
+        margin-bottom: 20px;
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards {
+        justify-content: space-around;
+    }
+
+    main .section.most-pop>.columns-wrapper>.columns-2-cols>div>div div.cards>div>div:first-child{
+        width: 58px;
+    height: 50px;
+        align-items: flex-end;
+    }
+
+    .section.most-pop.columns-container>div>div>div>div:nth-child(2)>div.cards>div>div:nth-child(2){
         font-size: 12px;
     }
 }

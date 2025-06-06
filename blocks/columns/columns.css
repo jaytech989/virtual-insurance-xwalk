@@ -21,13 +21,13 @@
 
 @media (width >= 900px) {
   .columns > div {
-    /* align-items: center; */
+    align-items: center;
     flex-direction: unset;
     gap: 24px;
   }
 
   .columns > div > div {
-    /* flex: 1;
-    order: unset; */
+    flex: 1;
+    order: unset;
   }
 }

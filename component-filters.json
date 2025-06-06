@@ -17,49 +17,20 @@
       "columns",
       "fragment",
       "carousel",
-      "accordion"
-    ]
-  },
-  {
-    "id": "accordion-group",
-    "components": [
-      "accordion"
-    ]
-  },
-  {
-    "id": "accordion-group",
-    "components": [
-      "accordion"
-    ]
-  },
-  {
-    "id": "cards-with-paragraph",
-    "components": [
-      "card-with-paragraph"
+      "accordion",
+      "emicalculator"
     ]
   },
   {
     "id": "cards",
     "components": [
-      "card",
-      "text"
-    ]
-  },
-  {
-    "id": "card",
-    "components": [
-      "text"
+      "card"
     ]
   },
   {
     "id": "columns",
     "components": [
-      "column",
-      "custom-cards-container",
-      "accordian",
-      "innvest-calculator",
-      "cards-with-paragraph",
-      "card-with-paragraph"
+      "column"
     ]
   },
   {
@@ -68,50 +39,7 @@
       "text",
       "image",
       "button",
-      "title",
-      "cards",
-      "card",
-      "customcards",
-      "customcard",
-      "custom-cards-container",
-      "accordian",
-      "innvest-calculator",
-      "gender-section",
-      "inputform",
-      "text-with-image",
-      "cards-with-paragraph",
-      "card-with-paragraph"
-    ]
-  },
-  {
-    "id": "form-with-banner",
-    "components": [
-      "inputform"
-    ]
-  },
-  {
-    "id": "inputform",
-    "components": [
-      "image",
-      "text",
-      "title",
-      "text-input",
-      "text-with-image"
-    ]
-  },
-  {
-    "id": "text-with-image",
-    "components": [
-      "image",
-      "text",
-      "title",
-      "text-input"
-    ]
-  },
-  {
-    "id": "topsearches-group",
-    "components": [
-      "topsearches"
+      "title"
     ]
   }
 ]

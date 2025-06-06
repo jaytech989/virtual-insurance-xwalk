@@ -139,6 +139,12 @@
     ]
   },
   {
+    "id": "tabs",
+    "components": [
+      "tab-item"
+    ]
+  },
+  {
     "id": "text-with-image",
     "components": [
       "image",

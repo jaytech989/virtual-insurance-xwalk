@@ -2,8 +2,8 @@ import { getMetadata } from "../../scripts/aem.js";
 import createField from "./form-fields.js";
 let emiValue = {};
 async function createForm(formHref) {
-  const { pathname, search } = new URL(formHref);
-  const resp = await fetch(pathname + search);
+  // const { pathname, search } = new URL(formHref);
+  const resp = await fetch(formHref);
   const json = await resp.json();
 
   const form = document.createElement("form");
@@ -124,7 +124,8 @@ async function inputEventRegeister() {
 
 
 export default async function decorate(block) {
-  const formLink = block.querySelector('a[href$=".json"]');
+  debugger
+  const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
 
@@ -136,7 +137,7 @@ export default async function decorate(block) {
   const langCode = getMetadata("language-code")
     ? getMetadata("language-code")
     : "en";
-  const queryParamFormLink = `${formLink.href}?sheet=${langCode}`;
+  const queryParamFormLink = `${formLink}`;
   const form = await createForm(queryParamFormLink);
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);

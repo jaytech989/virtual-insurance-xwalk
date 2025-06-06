@@ -628,6 +628,18 @@
     ]
   },
   {
+    "id": "code",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "htmlCode",
+        "value": "",
+        "label": "Author HTML Code"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -1219,6 +1231,77 @@
         "label": "Image Quick",
         "multi": true,
         "rootPath": "/content/dam/bandhan-life-ue-demo"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "tableTitle",
+        "value": "",
+        "label": "Table Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Header Row",
+        "name": "isHeaderRow",
+        "valueType": "boolean",
+        "description": "It will create the first row of the table as the header row."
+      },
+      {
+        "component": "select",
+        "label": "Select No. Columns",
+        "name": "noOfColumns",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "2 Column",
+            "value": "twoCol"
+          },
+          {
+            "name": "3 Column",
+            "value": "threeCol"
+          },
+          {
+            "name": "4 Column",
+            "value": "fourCol"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Select Table Variation",
+        "name": "tableVariation",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Default List Row",
+            "value": "defaultListRow"
+          },
+          {
+            "name": "Icon Variation",
+            "value": "icon"
+          },
+          {
+            "name": "Level Variation",
+            "value": "level"
+          },
+          {
+            "name": "Level Variation color",
+            "value": "LevelColor"
+          },
+          {
+            "name": "Button Row Variation",
+            "value": "buttonRow"
+          }
+        ]
       }
     ]
   },

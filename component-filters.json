@@ -37,6 +37,12 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "carditem"
+    ]
+  },
+  {
     "id": "cards-with-paragraph",
     "components": [
       "card-with-paragraph"

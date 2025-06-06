@@ -132,6 +132,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "CardItem",
+                  "model": "cardItem",
                   "classes": [
                     "cards-container"
                   ]

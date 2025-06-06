@@ -25,7 +25,8 @@
       "carousel",
       "teaser",
       "detailed-teaser",
-      "accordion-v2"
+      "accordion-v2",
+      "accordion-new"
     ]
   },
   {
@@ -35,7 +36,7 @@
     ]
   },
   {
-    "id": "accordion-v2",
+    "id": "accordion-new",
     "components": [
       "accordion-item"
     ]

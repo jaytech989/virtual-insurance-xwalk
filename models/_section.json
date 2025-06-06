@@ -60,7 +60,8 @@
         "carousel",
         "teaser",
         "detailed-teaser",
-        "accordion-v2"
+        "accordion-v2",
+        "accordion-new"
       ]
     }
   ]

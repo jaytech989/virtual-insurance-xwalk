@@ -1,10 +1,10 @@
 {
   "mappings": [
     "/content/virtual-insurance-ue/:/",
-    "/content/virtual-insurance-ue/emicalculator:/emicalculator.json",
-    "/content/virtual-insurance-ue/demo:/demo.json",
     "/content/virtual-insurance-ue/configuration:/.helix/config.json",
-    "/content/virtual-insurance-ue/metadata:/metadata.json"
+    "/content/virtual-insurance-ue/metadata:/metadata.json",
+     "/content/virtual-insurance-ue/spreadsheet:/spreadsheet.json",
+    "/content/virtual-insurance-ue/spreadsheet/emicalculator:/spreadsheet/emicalculator.json"
   ],
   "includes": [
     "/content/virtual-insurance-ue/"

@@ -61,7 +61,8 @@
         "teaser",
         "detailed-teaser",
         "accordion-v2",
-        "accordion-new"
+        "accordion-new",
+        "tabs"
       ]
     }
   ]

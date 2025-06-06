@@ -20,7 +20,10 @@
       "emicalculator",
       "accordion-group",
       "cardItem",
-      "carousels"
+      "carousels",
+      "carousel",
+      "teaser",
+      "detailed-teaser"
     ]
   },
   {

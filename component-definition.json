@@ -125,7 +125,7 @@
         },
         {
           "title": "CardItem",
-          "id": "carditem",
+          "id": "cardItem",
           "plugins": {
             "xwalk": {
               "page": {

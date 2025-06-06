@@ -214,7 +214,7 @@
     ]
   },
   {
-    "id": "carditem",
+    "id": "cardItem",
     "fields": [
       {
         "component": "select",

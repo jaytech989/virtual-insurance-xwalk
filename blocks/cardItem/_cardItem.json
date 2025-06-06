@@ -2,7 +2,7 @@
   "definitions": [
     {
       "title": "CardItem",
-      "id": "carditem",
+      "id": "cardItem",
       "plugins": {
         "xwalk": {
           "page": {
@@ -18,7 +18,7 @@
   ],
   "models": [
     {
-      "id": "carditem",
+      "id": "cardItem",
       "fields": [
         {
           "component": "select",
@@ -77,7 +77,7 @@
   "filters": [
     {
       "id": "carousel",
-      "components": ["carditem"]
+      "components": ["cardItem"]
     }
   ]
 }

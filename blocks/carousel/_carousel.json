@@ -78,7 +78,7 @@
   "filters": [
     {
       "id": "carousel",
-      "components": ["carditem", "card","cards"]
+      "components": ["cardItem", "card","cards"]
     }
   ]
 }

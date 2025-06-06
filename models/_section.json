@@ -51,12 +51,11 @@
         "cards",
         "columns",
         "fragment",
-        "carousel",
         "accordion",
         "emicalculator",
         "accordion-group",
         "cardItem",
-        "carousel"
+        "carousels"
       ]
     }
   ]

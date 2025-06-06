@@ -4,6 +4,7 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 export default function decorate(block) {
   console.log('block', block);
   /* change to ul, li */
+  debugger
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -21,5 +22,5 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimizedPic);
   });
   block.textContent = '';
-  block.append(ul);
+  // block.append(ul);
 }

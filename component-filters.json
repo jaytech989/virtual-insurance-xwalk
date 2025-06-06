@@ -16,12 +16,11 @@
       "cards",
       "columns",
       "fragment",
-      "carousel",
       "accordion",
       "emicalculator",
       "accordion-group",
       "cardItem",
-      "carousel"
+      "carousels"
     ]
   },
   {
@@ -62,7 +61,7 @@
     ]
   },
   {
-    "id": "carousel",
+    "id": "carousels",
     "components": [
       "cardItem",
       "card",

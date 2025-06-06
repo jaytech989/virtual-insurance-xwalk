@@ -34,6 +34,12 @@
     ]
   },
   {
+    "id": "accordion-v2",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
     "id": "accordion-group",
     "components": [
       "accordion"
@@ -65,11 +71,21 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "teaser",
+      "detailed-teaser"
+    ]
+  },
+  {
     "id": "carousels",
     "components": [
-      "cardItem",
-      "card",
-      "cards"
+      "carousels-item"
     ]
   },
   {

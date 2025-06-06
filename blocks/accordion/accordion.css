@@ -209,4 +209,8 @@ main .section.accordion-group-container .accordion-group-wrapper .accordion-grou
     width: 80%;
 
   }
+
+  .accordion p:last-child{
+    margin-bottom: 30px;
+  }
 }

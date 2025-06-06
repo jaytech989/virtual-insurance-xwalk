@@ -1,22 +1,29 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+// import{getContentFragmentData} from '../../scripts/cf-service.js'
+/* this function also gets called by accordion-group */
+export function generateAccordionDOM(block) {
+  console.log('acc  blok', block);
+
+  const details = document.createElement('details');
+  const summary = document.createElement('summary');
+  details.append(summary);
+  Array.from(block.children).forEach((element, i) => {
+    if (i === 0) {
+      const heading = element.querySelector('h2,h3,h4,h5,h6');
+      summary.append(heading || element.textContent.trim());
+    } else {
+      if (element.children[0].getAttribute('data-aue-prop') === 'heading') {
+        element.children[0].classList.add('acc_title');
+      } else if (element.children[0].getAttribute('data-aue-prop') === 'body') {
+        element.firstChild.classList.add('acc_body');
+      }
+      details.append(element);
+    }
+  });
+  return details;
+}
 
 export default function decorate(block) {
-
-  [...block.children].forEach((row) => {
-    const details = document.createElement('details');
-    details.className = 'accordion-item';
-    moveInstrumentation(row, details);
-    // decorate accordion item label
-    const label = row.children[0];
-    const summary = document.createElement('summary');
-    summary.className = 'accordion-item-label';
-    summary.append(...label.childNodes);
-    moveInstrumentation(label, summary);
-    // decorate accordion item body
-    const body = row.children[1];
-    body.className = 'accordion-item-body';
-    // decorate accordion item
-    details.append(summary, body);
-    row.replaceWith(details);
-  });
+  const dom = generateAccordionDOM(block);
+  block.textContent = '';
+  block.append(dom);
 }

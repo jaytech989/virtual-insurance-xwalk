@@ -2,26 +2,32 @@
   display: flex;
   flex-direction: column;
 }
-.columns > div > div {
-  order: 1;
-}
-.columns > div > .columns-img-col {
-  order: 0;
-}
-.columns > div > .columns-img-col img {
-  display: block;
-}
+
 .columns img {
   width: 100%;
 }
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
+    /* align-items: center; */
     flex-direction: unset;
     gap: 24px;
   }
+
   .columns > div > div {
-    flex: 1;
-    order: unset;
+    /* flex: 1;
+    order: unset; */
   }
 }

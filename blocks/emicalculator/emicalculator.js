@@ -15,7 +15,7 @@ async function createForm(formHref) {
     h4element.classList.add("form-headline-4");
   }
   // eslint-disable-next-line prefer-destructuring
-  form.dataset.action = pathname.split(".json")[0];
+  form.dataset.action = formHref.split(".json")[0];
   const fields = await Promise.all(
     json.data.map((fd) => createField(fd, form))
   );
@@ -124,7 +124,6 @@ async function inputEventRegeister() {
 
 
 export default async function decorate(block) {
-  debugger
   const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");

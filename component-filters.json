@@ -64,7 +64,9 @@
   {
     "id": "carousel",
     "components": [
-      "carditem"
+      "carditem",
+      "card",
+      "cards"
     ]
   },
   {

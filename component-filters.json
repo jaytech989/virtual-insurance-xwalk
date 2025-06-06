@@ -19,7 +19,9 @@
       "carousel",
       "accordion",
       "emicalculator",
-      "accordion-group"
+      "accordion-group",
+      "carditem",
+      "carousel"
     ]
   },
   {
@@ -51,6 +53,12 @@
     "id": "card",
     "components": [
       "text"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carditem"
     ]
   },
   {

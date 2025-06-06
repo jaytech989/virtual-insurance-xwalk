@@ -1,0 +1,79 @@
+{
+  "definitions": [
+    {
+      "title": "CardItem",
+      "id": "carditem",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "CardItem",
+              "filter": "carditem",
+              "classes": ["cards-container"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "carditem",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Teaser options",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Card Container",
+              "value": "card-container"
+            }
+          ]
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Card Style",
+          "options": [
+            {
+              "name": "ban-why-choose-model-ca",
+              "value": "ban-why-choose-model-ca"
+            },
+            {
+              "name": "card-shadow",
+              "value": "card-shadow"
+            },
+            {
+              "name": "Why iTerm Prime?",
+              "value": "bandhan-iterm-prime-cards"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

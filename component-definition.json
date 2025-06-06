@@ -124,6 +124,24 @@
           }
         },
         {
+          "title": "CardItem",
+          "id": "carditem",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "CardItem",
+                  "filter": "carditem",
+                  "classes": [
+                    "cards-container"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards with paragraph",
           "id": "cards-with-paragraph",
           "plugins": {
@@ -183,6 +201,24 @@
                   "model": "card",
                   "classes": [
                     "card-container"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "carousel",
+          "id": "carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "carousel",
+                  "filter": "carousel",
+                  "classes": [
+                    "carousel-container"
                   ]
                 }
               }

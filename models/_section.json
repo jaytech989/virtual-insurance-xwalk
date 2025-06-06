@@ -54,7 +54,9 @@
         "carousel",
         "accordion",
         "emicalculator",
-        "accordion-group"
+        "accordion-group",
+        "carditem",
+        "carousel"
       ]
     }
   ]

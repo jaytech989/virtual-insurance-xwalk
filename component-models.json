@@ -214,6 +214,62 @@
     ]
   },
   {
+    "id": "carditem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Teaser options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Card Container",
+            "value": "card-container"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Card Style",
+        "options": [
+          {
+            "name": "ban-why-choose-model-ca",
+            "value": "ban-why-choose-model-ca"
+          },
+          {
+            "name": "card-shadow",
+            "value": "card-shadow"
+          },
+          {
+            "name": "Why iTerm Prime?",
+            "value": "bandhan-iterm-prime-cards"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "cards-with-paragraph",
     "fields": [
       {
@@ -326,6 +382,62 @@
   },
   {
     "id": "card",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Teaser options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Card Container",
+            "value": "card-container"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Card Style",
+        "options": [
+          {
+            "name": "ban-why-choose-model-ca",
+            "value": "ban-why-choose-model-ca"
+          },
+          {
+            "name": "card-shadow",
+            "value": "card-shadow"
+          },
+          {
+            "name": "Why iTerm Prime?",
+            "value": "bandhan-iterm-prime-cards"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carousel",
     "fields": [
       {
         "component": "select",

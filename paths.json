@@ -6,7 +6,8 @@
     "/content/virtual-insurance-ue/configuration:/.helix/config.json",
     "/content/virtual-insurance-ue/metadata:/metadata.json",
     "/content/virtual-insurance-ue/emicalculator:/emicalculator.json",
-    "/content/virtual-insurance-ue/demo:/demo.json"
+    "/content/virtual-insurance-ue/demo:/demo.json",
+    "/content/virtual-insurance-ue/spreadsheet:/spreadsheet.json"
   ],
   "includes": [
     "/content/virtual-insurance-ue/"

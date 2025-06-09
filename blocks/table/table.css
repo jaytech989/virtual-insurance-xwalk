@@ -256,6 +256,8 @@
     height: 100%;
   }
   
+
+  
   @media (width>= 985px) { 
     .table .twoCol th, 
     .table .twoCol td {
@@ -280,4 +282,51 @@
       table-layout: fixed; 
     }
   }
-  
+
+
+  .fourCol {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #002f5f;
+  table-layout: fixed;
+}
+
+.fourCol th,
+.fourCol td {
+  border: 1px solid #d9d9d9;
+  padding: 12px 16px;
+  vertical-align: top;
+  word-wrap: break-word;
+}
+
+.fourCol th {
+  background-color: #004a7c; /* Dark blue header background */
+  color: #ffffff;
+  text-align: left;
+  font-weight: 600;
+}
+
+.fourCol tr:nth-child(even) td {
+  background-color: #f7f9fc; /* Alternate row background */
+}
+
+.fourCol p {
+  margin: 0;
+}
+
+.fourCol td:first-child {
+  font-weight: 600; /* Optional: make first column bold like a label */
+}
+
+/* Optional: Rounded corners */
+.fourCol {
+  border-radius: 8px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .fourCol {
+    font-size: 12px;
+  }
+}

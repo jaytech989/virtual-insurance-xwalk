@@ -45,6 +45,7 @@ export default async function decorate(block) {
   }
 
   rows.forEach((rowDiv, rowIndex) => {
+   
     const row = document.createElement('tr');
     [...rowDiv.attributes].forEach(({ nodeName, nodeValue }) => {
       row.setAttribute(nodeName, nodeValue);

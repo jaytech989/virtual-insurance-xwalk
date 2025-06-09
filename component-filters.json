@@ -141,6 +141,7 @@
       "text-with-image"
     ]
   },
+  "row",
   {
     "id": "tabs",
     "components": [

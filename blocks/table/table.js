@@ -52,7 +52,7 @@ export default async function decorate(block) {
 
     const rowCells = [...rowDiv.children].slice(0, columns);
 
-    if (variation === 'default') {
+
       table.classList.add('table-default');
       table.classList.add(totalColumns.textContent.trim());
       rowCells.forEach((cellDiv) => {
@@ -65,112 +65,7 @@ export default async function decorate(block) {
 
         row.appendChild(cell);
       });
-    } else if (variation === 'defaultListRow') {
-      table.classList.add('table-listRow');
-      table.classList.add(totalColumns.textContent.trim());
-      rowCells.forEach((cellDiv) => {
-        const hasList = hasUlList(cellDiv);
 
-        const cell =
-          showHeader.textContent.trim() === 'true' && rowIndex === 0
-            ? document.createElement('th')
-            : document.createElement('td');
-        if (hasList === true) {
-          cell.classList.add('cell-title');
-          cell.appendChild(cellDiv);
-        } else {
-          cell.textContent = cellDiv.textContent;
-        }
-        row.appendChild(cell);
-      });
-    } else if (variation === 'icon') {
-      table.classList.add('table-icon');
-      table.classList.add(totalColumns.textContent.trim());
-      rowCells.forEach((cellDiv) => {
-        const cell =
-          showHeader.textContent.trim() === 'true' && rowIndex === 0
-            ? document.createElement('th')
-            : document.createElement('td');
-        cell.appendChild(cellDiv);
-        row.appendChild(cell);
-      });
-    } else if (variation === 'level') {
-      table.classList.add('table-level');
-      rowCells.forEach((cellDiv) => {
-        const cell =
-          showHeader.textContent.trim() === 'true' && rowIndex === 0
-            ? document.createElement('th')
-            : document.createElement('td');
-        const cellText = cellDiv.textContent.trim().toLowerCase();
-        if (cellText === 'yes') {
-          cell.classList.add('concentric-circle');
-          cell.innerHTML = CIRCLEICON;
-        } else if (cellText === 'no') {
-          cell.textContent = '';
-        } else {
-          const hasNum = hasNumber(cellText);
-
-          if (hasNum === true) {
-            cell.style.fontWeight = 'var(--fw-bold)';
-          }
-          cell.appendChild(cellDiv);
-        }
-        row.appendChild(cell);
-      });
-    } else if (variation === 'LevelColor') {
-      table.classList.add('levelcolor');
-      const columnColors = [
-        'var(--c-white)',
-        'var(--c-level-header-1)',
-        'var(--c-level-header-2)',
-        'var(--c-level-header-3)',
-      ];
-
-      rowCells.forEach((cellDiv, cellIndex) => {
-        const cell =
-          showHeader.textContent.trim() === 'true' && rowIndex === 0
-            ? document.createElement('th')
-            : document.createElement('td');
-        const cellText = cellDiv.textContent.trim().toLowerCase();
-        if (cellText === 'yes') {
-          cell.classList.add('concentric-circle');
-          cell.innerHTML = CIRCLEICON;
-        } else if (cellText === 'no') {
-          cell.textContent = '';
-        } else {
-          const hasNum = hasNumber(cellText);
-
-          if (hasNum === true) {
-            cell.style.fontWeight = 'var(--fw-bold)';
-          }
-          cell.appendChild(cellDiv);
-        }
-
-        if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {
-          cell.style.color = columnColors[cellIndex];
-        }
-
-        row.appendChild(cell);
-      });
-    } else if (variation === 'buttonRow') {
-      table.classList.add('table-im-connect');
-      table.classList.add(totalColumns.textContent.trim());
-      rowCells.forEach((cellDiv) => {
-        const cell =
-          showHeader.textContent.trim() === 'true' && rowIndex === 0
-            ? document.createElement('th')
-            : document.createElement('td');
-
-        if (rowIndex === 0) {
-          cell.textContent = cellDiv.textContent;
-        } else if (rowIndex >= 1) {
-          cell.appendChild(cellDiv);
-          decorateButtons(cellDiv);
-        }
-
-        row.appendChild(cell);
-      });
-    }
 
     table.appendChild(row);
   });

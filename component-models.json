@@ -1309,28 +1309,37 @@
           {
             "name": "Default",
             "value": "default"
-          },
-          {
-            "name": "Default List Row",
-            "value": "defaultListRow"
-          },
-          {
-            "name": "Icon Variation",
-            "value": "icon"
-          },
-          {
-            "name": "Level Variation",
-            "value": "level"
-          },
-          {
-            "name": "Level Variation color",
-            "value": "LevelColor"
-          },
-          {
-            "name": "Button Row Variation",
-            "value": "buttonRow"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "colOneDescription",
+        "label": "Column 1 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colTwoDescription",
+        "label": "Column 2 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colThreeDescription",
+        "label": "Column 3 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colFourDescription",
+        "label": "Column 4 Description",
+        "valueType": "string"
       }
     ]
   },

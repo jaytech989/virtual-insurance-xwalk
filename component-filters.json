@@ -141,7 +141,12 @@
       "text-with-image"
     ]
   },
-  "row",
+  {
+    "id": "table",
+    "components": [
+      "row"
+    ]
+  },
   {
     "id": "tabs",
     "components": [

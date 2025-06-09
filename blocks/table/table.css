@@ -325,6 +325,7 @@
   border-radius: 8px;
   overflow: hidden;
 }
+
 @media (max-width: 768px) {
   .fourCol {
     font-size: 12px;

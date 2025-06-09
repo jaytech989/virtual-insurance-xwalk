@@ -131,7 +131,18 @@ export default async function decorate(block) {
   const outPutDiv = await createOutputDiv();
   mainWrapper.appendChild(outPutDiv);
 
+  const inputDiv = document.createElement("div");
+  inputDiv.classList.add("inputdiv");
+  const langCode = getMetadata("language-code")
+    ? getMetadata("language-code")
+    : "en";
+  const queryParamFormLink = `${formLink}`;
+  const form = await createForm(queryParamFormLink);
+  inputDiv.appendChild(form);
+  mainWrapper.appendChild(inputDiv);
 
   block.replaceChildren(mainWrapper);
-  
+  const emi = await calculateEMI();
+  const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
+  inputEventRegeister();
 }

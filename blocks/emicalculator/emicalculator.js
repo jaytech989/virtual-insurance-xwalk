@@ -122,7 +122,7 @@ async function inputEventRegeister() {
 }
 
 function validateForm(form) {
-  
+
   const requiredFields = form.querySelectorAll('[required]');
   let isValid = true;
 
@@ -203,7 +203,7 @@ export default async function decorate(block) {
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
   // const outPutDiv = await createOutputDiv();
-  mainWrapper.appendChild(outPutDiv);
+  // mainWrapper.appendChild(outPutDiv);
 
 
   block.replaceChildren(mainWrapper);

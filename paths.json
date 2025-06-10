@@ -8,8 +8,8 @@
     "/content/virtual-insurance-ue/spreadsheet/emicalculator:/spreadsheet/emicalculator.json",
     "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json",
     "/content/virtual-insurance-ue/spreadsheet/bannner-form:/spreadsheet/bannner-form.json",
-    "/content/virtual-insurance-ue/spreadsheet/banner-form2:/spreadsheet/banner-form2.json"
-   
+    "/content/virtual-insurance-ue/spreadsheet/banner-form2:/spreadsheet/banner-form2.json",
+   "/content/virtual-insurance-ue/spreadsheet/demo-emical:/spreadsheet/demo-emical.json"
   ],
   "includes": [
     "/content/virtual-insurance-ue/"

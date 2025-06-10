@@ -209,3 +209,7 @@ main .emicalculator-container.emi-cal {
   color: #663DB3;
   font-weight: bold;
 }
+
+form div span.errorMsg{
+  display: none;
+}

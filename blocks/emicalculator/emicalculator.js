@@ -194,8 +194,8 @@ export default async function decorate(block) {
   const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
-  const outPutDiv = await createOutputDiv();
-  mainWrapper.appendChild(outPutDiv);
+  // const outPutDiv = await createOutputDiv();
+  // mainWrapper.appendChild(outPutDiv);
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
   const queryParamFormLink = `${formLink}`;

@@ -191,37 +191,44 @@ async function handleSubmit(form) {
 
 
 export default async function decorate(block) {
-  const formLink = block.querySelector("a[href]").getAttribute('href');
+
+  const formLink = block.querySelector("a[href]")?.getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
   // const outPutDiv = await createOutputDiv();
   // mainWrapper.appendChild(outPutDiv);
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
-  const queryParamFormLink = `${formLink}`;
-  const form = await createForm(queryParamFormLink);
-  inputDiv.appendChild(form);
+  if(formLink){
+    const queryParamFormLink = `${formLink}`;
+    const form = await createForm(queryParamFormLink);
+    inputDiv.appendChild(form);
+  }
+
   mainWrapper.appendChild(inputDiv);
   // const outPutDiv = await createOutputDiv();
   // mainWrapper.appendChild(outPutDiv);
 
 
   block.replaceChildren(mainWrapper);
-  let btn=document.querySelector("form button")
+  if(formLink){
+    let btn=document.querySelector("form button")
 
-  btn.addEventListener('click', async function (e) {
-    e.preventDefault();
-
-    const valid = await handleSubmit(form);
-
-    if (!valid) {
-      const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-      if (firstInvalidEl) {
-        firstInvalidEl.focus();
-        firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
+    btn.addEventListener('click', async function (e) {
+      e.preventDefault();
+  
+      const valid = await handleSubmit(form);
+  
+      if (!valid) {
+        const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
+        if (firstInvalidEl) {
+          firstInvalidEl.focus();
+          firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
+        }
       }
-    }
-  });
+    });
+  }
+  
   // btn.addEventListener('click', (e) => {
   //   debugger
   //   e.preventDefault();

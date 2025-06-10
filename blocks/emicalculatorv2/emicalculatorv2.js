@@ -191,6 +191,7 @@ async function handleSubmit(form) {
 
 
 export default async function decorate(block) {
+  debugger
   const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");

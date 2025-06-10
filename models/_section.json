@@ -120,7 +120,8 @@
         "accordion-new",
         "tabs",
         "code",
-        "table"
+        "table",
+        "formdemo"
       ]
     }
   ]

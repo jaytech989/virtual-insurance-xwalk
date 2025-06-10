@@ -191,7 +191,7 @@ async function handleSubmit(form) {
 
 
 export default async function decorate(block) {
-
+  let form="";
   const formLink = block.querySelector("a[href]")?.getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
@@ -201,7 +201,7 @@ export default async function decorate(block) {
   inputDiv.classList.add("inputdiv");
   if(formLink){
     const queryParamFormLink = `${formLink}`;
-    const form = await createForm(queryParamFormLink);
+    form = await createForm(queryParamFormLink);
     inputDiv.appendChild(form);
   }
 

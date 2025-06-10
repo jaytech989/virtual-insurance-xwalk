@@ -32,14 +32,14 @@ function createLabel(fd) {
 function setCommonAttributes(field, fd) {
   field.disabled =
     fd.Disabled && (fd.Disabled.toLowerCase() === "true" ? "true" : false);
-  field.autocomplete = fd.Autocomplete && fd.Autocomplete.toLowerCase();
+  fd.Autocomplete && (field.autocomplete = fd.Autocomplete.toLowerCase());
   field.id = fd.Id;
   field.name = fd.Name;
   field.required =
     fd.Mandatory &&
     (fd.Mandatory.toLowerCase() === "true" ||
       fd.Mandatory.toLowerCase() === "x");
-  field.placeholder = fd.Placeholder;
+  fd.Placeholder && (field.placeholder = fd.Placeholder);
   field.value = fd.Value;
 }
 
@@ -187,6 +187,13 @@ const createFieldset = (fd) => {
   return { field, fieldWrapper };
 };
 
+function createFieldWrapperDiv(fd, className) {
+  const fieldWrapper = document.createElement("div");
+  // if (fd.Style) fieldWrapper.className = fd.Style;
+  fieldWrapper.classList.add(className);
+  return fieldWrapper;
+}
+
 const createToggle = (fd) => {
   const { field, fieldWrapper } = createInput(fd);
   field.type = "checkbox";
@@ -247,8 +254,50 @@ const createRange = (fd) => {
   return { field, fieldWrapper };
 };
 
+const createCalculatorRange = (fd) => {
+  fd.Type = "range";
+
+  const outerWrapper = createFieldWrapperDiv(fd, "outerdiv");
+  const label = createLabel(fd);
+  const dataDiv = createFieldWrapperDiv(fd, "data");
+  dataDiv.appendChild(label);
+  const inputDiv = createFieldWrapperDiv(fd, "inputDiv");
+  const spanVal = document.createElement("span");
+  spanVal.classList.add("inputinnerspan");
+  spanVal.textContent = fd.Symbols;
+
+  const calValinput = document.createElement("input");
+  calValinput.type = "text";
+  calValinput.classList.add("calValinput");
+
+  calValinput.value = fd.Min;
+  inputDiv.appendChild(calValinput);
+  inputDiv.appendChild(spanVal);
+  dataDiv.appendChild(inputDiv);
+
+  outerWrapper.appendChild(dataDiv);
+
+  const fieldWrapperParent = createFieldWrapperDiv(fd, "rangediv");
+  // fieldWrapper.append(field);
+  const { field } = createInput(fd);
+  if (!field.value) field.value = fd.Label || "on";
+  field.min = fd.Min;
+  field.max = fd.Max;
+  field.step = fd.Step;
+  field.value = fd.Value;
+
+  fieldWrapperParent.appendChild(field);
+  const rangLimiteWrapper = createRangeLimit(fd);
+  fieldWrapperParent.appendChild(rangLimiteWrapper);
+  // const { field, fieldWrapper } = createInputNew(fd);
+  outerWrapper.appendChild(fieldWrapperParent);
+
+  const fieldWrapper = createFieldWrapper(fd);
+  fieldWrapper.append(outerWrapper);
+  return { fieldWrapper };
+};
 const createRangeLimit = (fd) => {
-  const rangeVal = [fd.min, fd.max];
+  const rangeVal = [fd.Min, fd.Max];
   const rangeLimitDiv = document.createElement("div");
   rangeLimitDiv.classList.add("values");
   rangeVal.forEach((val) => {
@@ -273,6 +322,7 @@ const FIELD_CREATOR_FUNCTIONS = {
   radio: createRadio,
   range: createRange,
   label: createLabel,
+  calrange: createCalculatorRange,
 };
 
 export default async function createField(fd, form) {

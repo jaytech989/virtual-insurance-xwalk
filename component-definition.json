@@ -549,14 +549,12 @@
                 "template": {
                   "name": "Teaser",
                   "model": "teaser",
-                  "fileReference": "/content/dam/default-teaser-banner.png",
-                  "title": "Teaser Title",
-                  "titleType": "h3",
-                  "longDescr": "<p>Teaser Description</p>",
                   "classes": [
-                    "light",
-                    "left"
-                  ]
+                    "teaser-demo"
+                  ],
+                  "textContent_text": "<h2>Enter a title</h2><p>...and body text here!</p>",
+                  "textContent_cta": "/",
+                  "textContent_ctaText": "Click me!"
                 }
               }
             }

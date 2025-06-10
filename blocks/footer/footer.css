@@ -19,11 +19,11 @@ footer .footer .default-content-wrapper img{
   height: 100%;
 }
 
-
-@media (max-width: 768px) {
-  footer .footer p:nth-child(1) {
-    display: none;
+/* 
+@media (width >= 900px) {
+  footer .footer > div {
+    padding: 40px 32px 24px;
   }
-}
+} */
 
 

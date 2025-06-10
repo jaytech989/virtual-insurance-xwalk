@@ -12,7 +12,7 @@ console.log("popImg",popImg)
   // const popImg = block.children[10]
   if (popImg && popImg.querySelector("picture > img")!==null) {
     const img = popImg.querySelector("picture > img");
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [
+    const optimizedPic = createOptimizedPicture(img.src, 'alt text', false, [
       { width: "750" },
     ]);
     moveInstrumentation(img, optimizedPic.querySelector("img"));
@@ -32,7 +32,7 @@ console.log("popImg",popImg)
   const quickImg = block.children[6];
   if (quickImg && quickImg.querySelector("picture > img")!==null) {
     const pimg = quickImg.querySelector("picture > img");
-    const qoptimizedPic = createOptimizedPicture(pimg.src, pimg.alt, false, [
+    const qoptimizedPic = createOptimizedPicture(pimg.src, 'alt text', false, [
       { width: "750" },
     ]);
     moveInstrumentation(pimg, qoptimizedPic.querySelector("img"));
@@ -99,6 +99,7 @@ console.log("popImg",popImg)
       "src",
       popAllImg
     );
+    imgEl.setAttribute("alt", "alt with text");
     imgEl.setAttribute("data-aue-prop", "image");
     pictureEl.append(imgEl);
     divEl9.append(pictureEl);
@@ -234,6 +235,7 @@ console.log("popImg",popImg)
 
     const imgEl4 = document.createElement("img");
     imgEl4.setAttribute("src", quickAllImg);
+    imgEl4.setAttribute("alt", "alt for image");
     imgEl4.setAttribute("data-aue-prop", "image");
     pictureEl4.append(imgEl4);
     divEl30.append(pictureEl4);

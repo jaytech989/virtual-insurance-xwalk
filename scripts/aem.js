@@ -298,7 +298,7 @@ function getMetadata(name, doc = document) {
  */
 function createOptimizedPicture(
   src,
-  alt = '',
+  alt = 'image alternate text',
   eager = false,
   breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
 ) {

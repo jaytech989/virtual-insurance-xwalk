@@ -6,9 +6,9 @@
     "/content/virtual-insurance-ue/metadata:/metadata.json",
     "/content/virtual-insurance-ue/spreadsheet:/spreadsheet.json",
     "/content/virtual-insurance-ue/spreadsheet/emicalculator:/spreadsheet/emicalculator.json",
-    "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json"
-
-
+    "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json",
+    "/content/virtual-insurance-ue/spreadsheet/bannner-form:/spreadsheet/bannner-form.json",
+    "/content/virtual-insurance-ue/spreadsheet/banner-form2:/spreadsheet/banner-form2.json"
    
   ],
   "includes": [

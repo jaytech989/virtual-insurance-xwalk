@@ -295,17 +295,17 @@
 
 .fourCol th,
 .fourCol td {
-  border: 1px solid #d9d9d9;
-  padding: 12px 16px;
+  border: 1px solid #d9d9d9 !important;
+  padding: 12px 16px !important;
   vertical-align: top;
   word-wrap: break-word;
 }
 
 .fourCol th {
-  background-color: #004a7c; /* Dark blue header background */
-  color: #ffffff;
-  text-align: left;
-  font-weight: 600;
+  background-color: #004a7c !important; /* Dark blue header background */
+  color: #ffffff !important;
+  text-align: left !important;
+  /* font-weight: 600 !important; */
 }
 
 .fourCol tr:nth-child(even) td {
@@ -321,10 +321,10 @@
 }
 
 /* Optional: Rounded corners */
-.fourCol {
+/* .fourCol {
   border-radius: 8px;
   overflow: hidden;
-}
+} */
 
 @media (max-width: 768px) {
   .fourCol {

@@ -30,9 +30,9 @@ function createLabel(fd) {
 }
 
 function setCommonAttributes(field, fd) {
-  field.disabled =  fd.Disabled &&
-   (fd.Disabled.toLowerCase() === "true" ?"true":false);
-    
+  field.disabled =
+    fd.Disabled && (fd.Disabled.toLowerCase() === "true" ? "true" : false);
+  field.autocomplete = fd.Autocomplete && fd.Autocomplete.toLowerCase();
   field.id = fd.Id;
   field.name = fd.Name;
   field.required =
@@ -143,20 +143,17 @@ const createTextArea = (fd) => {
   fieldWrapper.append(label);
   fieldWrapper.append(field);
 
-
   return { field, fieldWrapper };
 };
 
 const createErrMsg = (fd) => {
-  
   const errField = document.createElement("span");
-  errField.classList.add("errorMsg")
-  errField.textContent=fd.ErrMsg
+  errField.classList.add("errorMsg");
+  errField.textContent = fd.ErrMsg;
 
   return { errField };
 };
 const createInput = (fd) => {
-  
   const field = document.createElement("input");
   field.type = fd.Type;
   setCommonAttributes(field, fd);
@@ -166,12 +163,10 @@ const createInput = (fd) => {
   field.setAttribute("aria-labelledby", label.id);
   fieldWrapper.append(label);
   fieldWrapper.append(field);
-  if(fd.Mandatory="true"){
-    const {errField} = createErrMsg(fd)
+  if ((fd.Mandatory = "true")) {
+    const { errField } = createErrMsg(fd);
     fieldWrapper.append(errField);
-
   }
-  
 
   return { field, fieldWrapper };
 };
@@ -217,25 +212,23 @@ const createToggle = (fd) => {
 };
 
 const createCheckbox = (fd) => {
-  
   const { field, fieldWrapper } = createInput(fd);
   if (fd.Checked) {
     field.value = field.value;
-    field.setAttribute("checked",true)
+    field.setAttribute("checked", true);
   }
   fieldWrapper.classList.add("selection-wrapper");
 
   return { field, fieldWrapper };
 };
 
-const createRadio = (fd) => {  
+const createRadio = (fd) => {
   const { field, fieldWrapper } = createInput(fd);
   if (!field.value) {
     field.value = fd.Label || "on";
   }
-  if(fd.Checked){
-    field.setAttribute("checked",true)
-
+  if (fd.Checked) {
+    field.setAttribute("checked", true);
   }
   fieldWrapper.classList.add("selection-wrapper");
 
@@ -252,7 +245,6 @@ const createRange = (fd) => {
     (field.step = fd.Step);
 
   return { field, fieldWrapper };
-
 };
 
 const createRangeLimit = (fd) => {

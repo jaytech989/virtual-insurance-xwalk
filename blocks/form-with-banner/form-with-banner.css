@@ -20,6 +20,14 @@
     /* Responsive Styles */
 }
 
+.cmp-form-banner-container #step1 > h3 {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0.625rem;
+    line-height: 20px;
+    color: #000000;
+}
+
 .cmp-form-banner-container .investment-form-container {
     max-width: 900px;
     margin: 0 auto;

@@ -1,0 +1,212 @@
+.accordion details {
+  color: var(--non-spectrum-grey);
+  padding: 24px 32px 40px;
+  align-items: flex-start !important;
+  cursor: pointer;
+  width: 100%;
+  margin-top: -25px;
+  border-radius: 20px;
+  background-color: #F2F8FF;
+  border-radius: 1rem;
+  border: 3px solid #ffffff;
+  display: flex;
+  flex-flow: column wrap;
+  margin: -1rem auto 0 !important;
+  z-index: 1;
+  position: relative;
+}
+
+.accordion details summary {
+  box-sizing: content-box;
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 0;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--spectrum-font-size-100);
+  line-height: 21px;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  position: relative;
+}
+
+.accordion details summary :where(h2, h3, h4, h5, h6) {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  display: inline;
+}
+
+/* 
+.accordion details summary::before {
+  content: url('../../icons/chevron_right.svg');
+  position: relative;
+  top: 3.5px;
+  left: -4.2px;
+  margin-right: -2px;
+} */
+
+.accordion details summary::after {
+  content: url('../../icons/chevron_right.svg');
+  position: relative;
+  top: 3.5px;
+  left: -4.2px;
+  margin-right: -2px;
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion details summary::marker {
+  content: none;
+}
+
+.accordion details>div>div {
+  color: var(--non-spectrum-raisin-black);
+  font-size: var(--spectrum-font-size-200);
+  line-height: var(--spectrum-line-height-m);
+  margin-left: 14px;
+  margin-top: 14px;
+}
+
+.accordion details h1,
+.accordion details h2,
+.accordion details h3 {
+  margin-top: 14px;
+}
+
+.accordion p {
+  margin-top: 14px;
+}
+
+.accordion ol li p {
+  margin-bottom: 8px;
+}
+
+.accordion p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion ul {
+  margin-top: 14px;
+}
+
+.accordion ul li {
+  margin-top: 0;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.accordion ul li:last-child {
+  margin-bottom: 0;
+}
+
+ol .accordion ul {
+  margin-bottom: 14px;
+}
+
+.accordion ul li ul {
+  margin-bottom: 14px;
+}
+
+ol .accordion summary {
+  font-size: var(--spectrum-font-size-200);
+}
+
+.accordion details .accordion {
+  margin: 0;
+}
+
+.accordion details details summary {
+  font-size: var(--spectrum-font-size-200);
+  line-height: 24px;
+}
+
+.accordion details[open] {
+  /* padding-bottom: 16px; */
+  background-color: #F2F8FF;
+  margin-bottom: -2rem !important;
+  border: 3px solid transparent;
+}
+
+/* .accordion details[open] summary::before {
+  content: url('../../icons/chevron-down.svg');
+} */
+.accordion details[open] summary::after {
+  content: url('../../icons/chevron-down.svg');
+}
+
+.shade-box .accordion-wrapper:first-child details {
+  padding-top: 16px;
+}
+
+
+main .section.accordion-group-container .accordion-group-wrapper {
+  /* margin: 1rem 0 2rem; */
+  width: 100%;
+  /* margin-bottom: 3rem; */
+
+}
+
+main .section.accordion-group-container .accordion-group-wrapper .accordion-group.acc-grp {
+
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  width: 840px;
+  /* background-color: #F2F8FF; */
+  border-radius: 1rem;
+  /* border: 3px solid #ffffff; */
+  display: flex;
+  flex-flow: column wrap;
+  margin: -1rem auto 0 !important;
+  /* background-color: azure; */
+
+}
+
+main .section.accordion-group-container .accordion-group-wrapper .accordion-group.acc-grp .accordion.block {
+  width: 792px;
+  border: 3px solid transparent;
+}
+
+
+.section.accordion-group-container .default-content-wrapper h1 {
+  margin-bottom: 60px;
+}
+
+.section.accordion-group-container .default-content-wrapper .button-container {
+  text-align: center;
+}
+
+.section.accordion-group-container .default-content-wrapper .button-container a {
+  border: none;
+  background-color: #153050;
+  border-radius: 8px;
+  padding: 16px 42px;
+  box-shadow: 0 9px 17px 0 rgba(38, 133, 245, 0.28);
+  letter-spacing: 0.22px;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion details {
+    padding: 12px;
+  }
+  
+  main .section.accordion-group-container .accordion-group-wrapper .accordion-group.acc-grp .accordion.block {
+    width: 100% !important;
+  }
+
+  main .section.accordion-group-container .accordion-group-wrapper .accordion-group.acc-grp {
+    width: 100%;
+  }
+
+  main .section.accordion-group-container .accordion-group-wrapper {
+    margin: 0;
+    width: 80%;
+
+  }
+}

@@ -145,3 +145,13 @@ async function loadPage() {
 }
 
 loadPage();
+
+export function isAuthorEnvironment(domainUrlparam) {
+
+  domainUrlparam = window.location.origin.includes("author");
+  if(domainUrlparam){
+    return true
+  }
+return 
+
+}

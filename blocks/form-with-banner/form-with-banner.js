@@ -239,7 +239,7 @@ async function fetchData(url) {
   try {
     const response = await fetch(url, {
       method: "GET",
-      credentials: "include",
+      // credentials: "include",
     });
 
     console.log(response, "response");
@@ -265,7 +265,7 @@ export default function decorate(block) {
   const blockImg = block.children[10]
   if(blockImg){
     const img=blockImg.querySelector("picture > img");
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [
+    const optimizedPic = createOptimizedPicture(img.src, 'image with alt', false, [
       { width: "750" },
     ]);
     moveInstrumentation(img, optimizedPic.querySelector("img"));
@@ -386,16 +386,15 @@ export default function decorate(block) {
 
   const h3El2 = document.createElement("h3");
   h3El2.textContent = "Gender";
-  divEl11.append(h3El2);
+  
 
   //gender div
   const divEl13 = document.createElement("div");
   divEl13.setAttribute("class", "gender-options");
 
-  block.children[2].textContent
-    .trim()
-    .split(",")
-    .forEach((labelText, index) => {
+  const genderButtonsArr = block.children[2].textContent.trim().split(",").filter(n => n);
+
+    genderButtonsArr.forEach((labelText, index) => {
       const btn = document.createElement("button");
 
       btn.classList.add("gender-option");
@@ -420,8 +419,11 @@ export default function decorate(block) {
       // Append inner div to the form
       divEl13.appendChild(btn);
     });
-  console.log("divEl13", divEl13);
-  divEl11.append(divEl13);
+
+  if(genderButtonsArr.length) {
+    divEl11.append(h3El2);
+    divEl11.append(divEl13);
+  }
 
   //   const buttonEl2 = document.createElement('button');
   //   buttonEl2.setAttribute('class', 'gender-option selected');
@@ -825,7 +827,6 @@ export default function decorate(block) {
   initFormHandler();
 
   (async () => {
-    
     try {
       let domainUrl=""
       // const envCheck=isAuthorEnvironment();

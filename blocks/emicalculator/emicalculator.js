@@ -1,6 +1,6 @@
-import { getMetadata } from "../../scripts/aem.js";
-import createField from "./eform-fields.js";
-let emiValue = {};
+
+import  createField  from "../form/form-fields.js";
+
 async function createForm(formHref) {
   // const { pathname, search } = new URL(formHref);
   const resp = await fetch(formHref);
@@ -121,17 +121,120 @@ async function inputEventRegeister() {
   });
 }
 
+function validateForm(form) {
+  
+  const requiredFields = form.querySelectorAll('[required]');
+  let isValid = true;
+
+  requiredFields.forEach(field => {
+    const wrapper = field.closest('[data-fieldset]');
+    const errorMsg = wrapper?.querySelector('.errorMsg');
+    let fieldIsValid = true;
+
+    // Validate checkbox
+    if (field.type === 'checkbox' && !field.checked) {
+      fieldIsValid = false;
+    }
+
+    // Validate radio group
+    if (field.type === 'radio') {
+      const group = form.querySelectorAll(`input[name="${field.name}"]`);
+      const oneChecked = Array.from(group).some(r => r.checked);
+      if (!oneChecked) {
+        fieldIsValid = false;
+      }
+    }
+
+    // Validate general input (text, email, etc.)
+    if ((field.type !== 'checkbox' && field.type !== 'radio') && !field.value.trim()) {
+      fieldIsValid = false;
+    }
+
+    // Show/hide error message
+    if (errorMsg) {
+      errorMsg.style.display = fieldIsValid ? 'none' : 'inline';
+    }
+
+    if (!fieldIsValid) {
+      isValid = false;
+    }
+  });
+
+  return isValid;
+}
+
+
+async function handleSubmit(form) {
+  if (form.getAttribute('data-submitting') === 'true') return false;
+
+  const submit = form.querySelector('button[type="submit"]');
+
+  const isValid = validateForm(form);
+  if (!isValid) return false;
+
+  try {
+    form.setAttribute('data-submitting', 'true');
+    submit.disabled = true;
+
+    console.log('Form submitted!');
+    // Add your AJAX/fetch logic here if needed
+
+    return true;
+  } catch (e) {
+    console.error('Submission error:', e);
+    return false;
+  } finally {
+    form.setAttribute('data-submitting', 'false');
+    submit.disabled = false;
+  }
+}
 
 
 export default async function decorate(block) {
   const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
-
   const outPutDiv = await createOutputDiv();
+  mainWrapper.appendChild(outPutDiv);
+  const inputDiv = document.createElement("div");
+  inputDiv.classList.add("inputdiv");
+  const queryParamFormLink = `${formLink}`;
+  const form = await createForm(queryParamFormLink);
+  inputDiv.appendChild(form);
+  mainWrapper.appendChild(inputDiv);
+  // const outPutDiv = await createOutputDiv();
   mainWrapper.appendChild(outPutDiv);
 
 
   block.replaceChildren(mainWrapper);
-  
+  let btn=document.querySelector("form button")
+
+  btn.addEventListener('click', async function (e) {
+    e.preventDefault();
+
+    const valid = await handleSubmit(form);
+
+    if (!valid) {
+      const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
+      if (firstInvalidEl) {
+        firstInvalidEl.focus();
+        firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+  // btn.addEventListener('click', (e) => {
+  //   debugger
+  //   e.preventDefault();
+  //   // handleSubmit(form);
+  //   // const valid =   handleSubmit(form);
+  //   if (valid) {
+     
+  //   } else {
+  //     const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
+  //     if (firstInvalidEl) {
+  //       firstInvalidEl.focus();
+  //       firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // });
 }

@@ -50,6 +50,7 @@ function generatePayload(form) {
 }
 
 function handleSubmitError(form, error) {
+  
   // eslint-disable-next-line no-console
   console.error(error);
   form.querySelector('button[type="submit"]').disabled = false;
@@ -60,6 +61,7 @@ function handleSubmitError(form, error) {
 }
 
 async function handleSubmit(form) {
+
   if (form.getAttribute('data-submitting') === 'true') {
     return;
   }
@@ -95,6 +97,7 @@ async function handleSubmit(form) {
 }
 
 export default async function decorate(block) {
+  debugger
   const formLink = block.querySelector('a[href$=".json"]');
   if (!formLink) {
     return;

@@ -18,7 +18,15 @@
       "fragment",
       "carousel",
       "accordion",
-      "emicalculator"
+      "emicalculator",
+      "form-with-banner",
+      "accordion-new"
+    ]
+  },
+  {
+    "id": "accordion-new",
+    "components": [
+      "accordion-item"
     ]
   },
   {
@@ -40,6 +48,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "form-with-banner",
+    "components": [
+      "inputform"
     ]
   }
 ]

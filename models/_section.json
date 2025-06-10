@@ -53,7 +53,9 @@
         "fragment",
         "carousel",
         "accordion",
-        "emicalculator"
+        "emicalculator",
+        "form-with-banner",
+        "accordion-new"
       ]
     }
   ]

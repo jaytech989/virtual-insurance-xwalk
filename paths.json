@@ -1,6 +1,7 @@
 {
   "mappings": [
     "/content/virtual-insurance-ue/:/",
+    "/content/virtual-insurance-ue/homepage-copy/:/homepage-copy",
     "/content/virtual-insurance-ue/configuration:/.helix/config.json",
     "/content/virtual-insurance-ue/metadata:/metadata.json",
     "/content/virtual-insurance-ue/spreadsheet:/spreadsheet.json",

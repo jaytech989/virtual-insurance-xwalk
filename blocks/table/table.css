@@ -316,9 +316,9 @@
   margin: 0;
 }
 
-.fourCol td:first-child {
-  font-weight: 600; /* Optional: make first column bold like a label */
-}
+/* .fourCol td:first-child {
+  font-weight: 600; 
+} */
 
 /* Optional: Rounded corners */
 /* .fourCol {

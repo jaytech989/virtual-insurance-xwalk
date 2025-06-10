@@ -33,6 +33,62 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "ban-why-choose-model",
+              "value": "ban-why-choose-model"
+            },
+            {
+              "name": "most-pop",
+              "value": "most-pop"
+            },
+            {
+              "name": "quick-link",
+              "value": "quick-link"
+            },
+            {
+              "name": "Smart Calculator",
+              "value": "smart-cal"
+            },
+            {
+              "name": "most-pop-left",
+              "value": "most-pop-left"
+            },
+            {
+              "name": "section-container",
+              "value": "section-container"
+            },
+            {
+              "name": "Why iTerm Prime?",
+              "value": "bandhan-iterm-prime-cards"
+            },
+            {
+              "name": "lets go card",
+              "value": "lets-go-card"
+            },
+            {
+              "name": "lets go card11",
+              "value": "lets-go-card1"
+            },
+            {
+              "name": "people-search-buttons",
+              "value": "people-search-buttons"
+            },
+            {
+              "name": " Certified Card",
+              "value": "certified-card"
+            },
+            {
+              "name": "Settlement Card",
+              "value": "settlement-card"
+            },
+            {
+              "name": "Mail us card",
+              "value": "mail-us-card"
+            },
+            {
+              "name": "Bandhan Footer",
+              "value": "bandhan-footer"
             }
           ]
         }

@@ -97,7 +97,7 @@ async function handleSubmit(form) {
 }
 
 export default async function decorate(block) {
-  debugger
+  // debugger
   const formLink = block.querySelector('a[href$=".json"]');
   if (!formLink) {
     return;

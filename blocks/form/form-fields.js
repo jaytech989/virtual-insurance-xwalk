@@ -228,9 +228,7 @@ const createCheckbox = (fd) => {
   return { field, fieldWrapper };
 };
 
-const createRadio = (fd) => {
-  debugger
-  
+const createRadio = (fd) => {  
   const { field, fieldWrapper } = createInput(fd);
   if (!field.value) {
     field.value = fd.Label || "on";

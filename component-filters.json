@@ -31,7 +31,8 @@
       "code",
       "table",
       "formdemo",
-      "emicalculatorv2"
+      "emicalculatorv2",
+      "tabsv2"
     ]
   },
   {
@@ -153,6 +154,12 @@
     "id": "tabs",
     "components": [
       "tab-item"
+    ]
+  },
+  {
+    "id": "tabsv2",
+    "components": [
+      "tab-itemv2"
     ]
   },
   {

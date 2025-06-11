@@ -192,6 +192,10 @@
           {
             "name": "Bandhan Footer",
             "value": "bandhan-footer"
+          },
+          {
+            "name": "Common Form Section ",
+            "value": "common-form-section"
           }
         ]
       }

@@ -163,6 +163,15 @@
     ]
   },
   {
+    "id": "tab-itemv2",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
     "id": "text-with-image",
     "components": [
       "image",

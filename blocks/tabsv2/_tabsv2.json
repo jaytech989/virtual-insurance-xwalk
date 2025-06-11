@@ -32,36 +32,22 @@
       }
     ],
     "models": [
-      {
-        "id": "tab-itemv2",
-        "fields": [
-          {
-            "component": "text",
-            "name": "title",
-            "label": "Title"
-          },
-          {
-            "component": "richtext",
-            "name": "text",
-            "value": "",
-            "label": "Text",
-            "valueType": "string"
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "image",
-            "label": "Image",
-            "multi": false
-          }
-        ]
-      }
+     
     ],
     "filters": [
       {
         "id": "tabsv2",
         "components": [
           "tab-itemv2"
+        ]
+      },
+      {
+        "id": "tab-itemv2",
+        "components": [
+          "text",
+          "image",
+          "button",
+          "title"
         ]
       }
     ]

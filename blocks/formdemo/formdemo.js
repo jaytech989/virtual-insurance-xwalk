@@ -70,57 +70,6 @@ async function createOutputDiv() {
   return outputDiv;
 }
 
-async function inputEventRegeister() {
-  const inputFields = document.querySelectorAll(".emicalculator input.calValinput");
-  const rangeFields = document.querySelectorAll(".emicalculator input[type='range']");
-  
-  const getOuterDivAndRange = (el) => {
-    const outerDiv = el.closest('.outerdiv');
-    const rangeInput = outerDiv.querySelector('input[type="range"]');
-    return { outerDiv, rangeInput };
-  };
-
-  const updateEMI = async () => {
-    const emi = await calculateEMI();
-    document.getElementById("emiamount").textContent = emi;
-  };
-
-  rangeFields.forEach((el) => {
-    el.addEventListener("input", async (event) => {
-      event.preventDefault();
-      const { outerDiv, rangeInput } = getOuterDivAndRange(event.currentTarget);
-      outerDiv.querySelector(".calValinput").value = rangeInput.value;
-      
-      console.log(rangeInput.value);
-      await updateEMI();  
-    });
-  });
-
-  // Handle text input focusout events
-  inputFields.forEach((el) => {
-    el.addEventListener("focusout", async (event) => {
-      event.preventDefault();
-      const { outerDiv, rangeInput } = getOuterDivAndRange(event.currentTarget);
-
-      const currentVal = parseInt(event.currentTarget.value, 10);
-      const minVal = parseInt(rangeInput.min, 10);
-      const maxVal = parseInt(rangeInput.max, 10);
-
-
-      let clampedVal = Math.max(minVal, Math.min(currentVal, maxVal));
-
-      if (currentVal !== clampedVal) {
-        outerDiv.querySelector(".calValinput").value = clampedVal;
-      }
-
-      // Update the range input to match the clamped value
-      rangeInput.value = clampedVal;
-      
-      await updateEMI();  // Update EMI
-    });
-  });
-}
-
 function validateForm(form) {
 
   const requiredFields = form.querySelectorAll('[required]');
@@ -191,57 +140,35 @@ async function handleSubmit(form) {
 
 
 export default async function decorate(block) {
-  let form="";
-  const formLink = block.querySelector("a[href]")?.getAttribute('href');
+  const formLink = block.querySelector("a[href]").getAttribute('href');
   const mainWrapper = document.createElement("div");
   mainWrapper.classList.add("mainwrapper");
   // const outPutDiv = await createOutputDiv();
   // mainWrapper.appendChild(outPutDiv);
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
-  if(formLink){
-    const queryParamFormLink = `${formLink}`;
-    form = await createForm(queryParamFormLink);
-    inputDiv.appendChild(form);
-  }
-
+  const queryParamFormLink = `${formLink}`;
+  const form = await createForm(queryParamFormLink);
+  inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
   // const outPutDiv = await createOutputDiv();
   // mainWrapper.appendChild(outPutDiv);
 
 
   block.replaceChildren(mainWrapper);
-  if(formLink){
-    let btn=document.querySelector("form button")
+  let btn=document.querySelector("form button")
 
-    btn.addEventListener('click', async function (e) {
-      e.preventDefault();
-  
-      const valid = await handleSubmit(form);
-  
-      if (!valid) {
-        const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-        if (firstInvalidEl) {
-          firstInvalidEl.focus();
-          firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
-        }
+  btn.addEventListener('click', async function (e) {
+    e.preventDefault();
+
+    const valid = await handleSubmit(form);
+
+    if (!valid) {
+      const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
+      if (firstInvalidEl) {
+        firstInvalidEl.focus();
+        firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
       }
-    });
-  }
-  
-  // btn.addEventListener('click', (e) => {
-  //   debugger
-  //   e.preventDefault();
-  //   // handleSubmit(form);
-  //   // const valid =   handleSubmit(form);
-  //   if (valid) {
-     
-  //   } else {
-  //     const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-  //     if (firstInvalidEl) {
-  //       firstInvalidEl.focus();
-  //       firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
-  //     }
-  //   }
-  // });
+    }
+  });
 }

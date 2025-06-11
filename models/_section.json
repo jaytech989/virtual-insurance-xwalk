@@ -89,6 +89,10 @@
             {
               "name": "Bandhan Footer",
               "value": "bandhan-footer"
+            },
+            {
+              "name": "Common Form Section ",
+              "value": "common-form-section"
             }
           ]
         }
@@ -120,7 +124,10 @@
         "accordion-new",
         "tabs",
         "code",
-        "table"
+        "table",
+        "formdemo",
+        "emicalculatorv2",
+        "tabsv2"
       ]
     }
   ]

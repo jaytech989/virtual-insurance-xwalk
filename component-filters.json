@@ -29,7 +29,10 @@
       "accordion-new",
       "tabs",
       "code",
-      "table"
+      "table",
+      "formdemo",
+      "emicalculatorv2",
+      "tabsv2"
     ]
   },
   {
@@ -151,6 +154,12 @@
     "id": "tabs",
     "components": [
       "tab-item"
+    ]
+  },
+  {
+    "id": "tabsv2",
+    "components": [
+      "tab-itemv2"
     ]
   },
   {

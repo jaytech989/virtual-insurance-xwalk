@@ -213,3 +213,5 @@ main .emicalculator-container.emi-cal {
 form div span.errorMsg{
   display: none;
 } */
+
+@import url('./common-form.css');

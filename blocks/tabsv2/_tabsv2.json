@@ -45,7 +45,7 @@
         "id": "tab-itemv2",
         "components": [
           "text",
-          "image",
+          "imageitem",
           "button",
           "title"
         ]

@@ -6,7 +6,8 @@
     "/content/virtual-insurance-ue/metadata:/metadata.json",
      "/content/virtual-insurance-ue/spreadsheet:/spreadsheet.json",
     "/content/virtual-insurance-ue/spreadsheet/emicalculator:/spreadsheet/emicalculator.json",
-    "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json"
+    "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json",
+    "/content/virtual-insurance-ue/spreadsheet/multi-step-form:/spreadsheet/multi-step-form.json"
 
   ],
   "includes": [

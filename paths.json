@@ -9,7 +9,8 @@
     "/content/virtual-insurance-ue/spreadsheet/demo-calculator:/spreadsheet/demo-calculator.json",
     "/content/virtual-insurance-ue/spreadsheet/bannner-form:/spreadsheet/bannner-form.json",
     "/content/virtual-insurance-ue/spreadsheet/banner-form2:/spreadsheet/banner-form2.json",
-   "/content/virtual-insurance-ue/spreadsheet/demo-emical:/spreadsheet/demo-emical.json"
+   "/content/virtual-insurance-ue/spreadsheet/demo-emical:/spreadsheet/demo-emical.json",
+   "/content/virtual-insurance-ue/spreadsheet/multi-step-form:/spreadsheet/multi-step-form.json"
   ],
   "includes": [
     "/content/virtual-insurance-ue/"

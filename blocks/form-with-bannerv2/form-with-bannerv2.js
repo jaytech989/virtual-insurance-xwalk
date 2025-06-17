@@ -359,23 +359,35 @@ async function createFormMulti(formHref) {
     stepWrapper.id = stepKey;
     stepWrapper.dataset.stepIndex = i;
     if (i !== 0) stepWrapper.style.display = "none";
-
-    // 👉 Stepper guide element
+  
     const stepper = document.createElement("div");
-    stepper.classList.add("stepper-guide");
-    stepper.textContent = `Step ${i + 1}`; // of ${totalSteps}
+    stepper.classList.add("stepper");
+  
+    for (let j = 0; j < totalSteps; j++) {
+      const step = document.createElement("div");
+      step.className = "step";
+      step.setAttribute("data-step", j + 1);
+      step.textContent = `${j + 1}`;
+  
+      if (j === i) {
+        step.classList.add("active");
+      }
+  
+      stepper.appendChild(step);
+    }
+  
     stepWrapper.appendChild(stepper);
-
-    // Create and append fields
+  
     const fields = await Promise.all(
       stepMap[stepKey].map((fd) => createField(fd, form))
     );
     fields.forEach((field) => {
       if (field) stepWrapper.appendChild(field);
     });
-
+  
     form.appendChild(stepWrapper);
   }
+  
   
   const fieldsets = form.querySelectorAll("fieldset");
   fieldsets.forEach((fieldset) => {

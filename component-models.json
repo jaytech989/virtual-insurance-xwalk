@@ -196,7 +196,11 @@
           {
             "name": "Common Form Section ",
             "value": "common-form-section"
-          }
+          },
+          {
+              "name": "Bandhan Form Section ",
+              "value": "bandhan-form-section"
+            }
         ]
       }
     ]

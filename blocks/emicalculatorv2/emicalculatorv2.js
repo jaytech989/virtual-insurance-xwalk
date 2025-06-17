@@ -37,6 +37,73 @@ async function createForm(formHref) {
   return form;
 }
 
+async function createFormMulti(formHref) {
+  const resp = await fetch(formHref);
+  const json = await resp.json();
+
+  const form = document.createElement("div");
+  // form.dataset.action = formHref.split(".json")[0];
+
+  // Optional: Replace h1 with h4
+  const h1element = document.getElementById("form-headline-1");
+  if (h1element) {
+    const h4element = document.createElement("h4");
+    h4element.innerHTML = h1element.innerHTML;
+    h1element.replaceWith(h4element);
+    h4element.classList.add("form-headline-4");
+  }
+
+  // Group fields by Steppart
+  const stepMap = {};
+  json.data.forEach((item) => {
+    const stepKey = `step${item.Steppart}`;
+    if (!stepMap[stepKey]) {
+      stepMap[stepKey] = [];
+    }
+    stepMap[stepKey].push(item);
+  });
+
+  const stepKeys = Object.keys(stepMap);
+  const totalSteps = stepKeys.length;
+
+  // Create step containers
+  for (let i = 0; i < totalSteps; i++) {
+    const stepKey = stepKeys[i];
+    const stepWrapper = document.createElement("form");
+    stepWrapper.classList.add("form-step");
+    stepWrapper.id = stepKey;
+    stepWrapper.dataset.stepIndex = i;
+    if (i !== 0) stepWrapper.style.display = "none";
+
+    // 👉 Stepper guide element
+    const stepper = document.createElement("div");
+    stepper.classList.add("stepper-guide");
+    stepper.textContent = `Step ${i + 1} of ${totalSteps}`;
+    stepWrapper.appendChild(stepper);
+
+    // Create and append fields
+    const fields = await Promise.all(
+      stepMap[stepKey].map((fd) => createField(fd, form))
+    );
+    fields.forEach((field) => {
+      if (field) stepWrapper.appendChild(field);
+    });
+
+    form.appendChild(stepWrapper);
+  }
+  debugger;
+  const fieldsets = form.querySelectorAll("fieldset");
+  fieldsets.forEach((fieldset) => {
+    form
+      .querySelectorAll(`[data-fieldset="${fieldset.name}"`)
+      .forEach((field) => {
+        fieldset.append(field);
+      });
+  });
+
+  return form;
+}
+
 async function calculateEMI() {
   const keys = ["principal", "years", "annualRate"];
   const inputval = document.getElementsByClassName("calValinput");
@@ -123,7 +190,96 @@ async function inputEventRegeister() {
   });
 }
 
+// function enableStepNavigation(form) {
+//   const steps = form.querySelectorAll(".form-step");
+//   let currentStep = 0;
 
+//   steps.forEach((step, index) => {
+//     const submitBtn = step.querySelector('button[type="submit"], button.next-cta, button[name="nex-xta"]');
+
+//     if (submitBtn) {
+//       submitBtn.addEventListener("click", (e) => {
+//         e.preventDefault();
+
+//         if (index < steps.length - 1) {
+//           // Hide current step
+//           steps[index].style.display = "none";
+
+//           // Show next step
+//           steps[index + 1].style.display = "block";
+
+//           currentStep = index + 1;
+//         } else {
+//           // Last step, you can call form.submit() or show a summary
+//           form.submit();
+//         }
+//       });
+//     }
+//   });
+// }
+function enableStepNavigation(form) {
+  debugger;
+  const steps = form.querySelectorAll(".form-step");
+
+  steps.forEach((step, index) => {
+    const submitBtn = step.querySelector(
+      'button[type="submit"], button.next-cta, button[name="nex-xta"]'
+    );
+
+    if (submitBtn) {
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const inputs = step.querySelectorAll("input, select, textarea");
+        let allValid = true;
+
+        inputs.forEach((input) => {
+          debugger;
+          const isRequired =
+            input.hasAttribute("required") ||
+            input.getAttribute("mandatory") === "true";
+
+          // Reset any previous error
+          input.classList.remove("field-error");
+
+          if (isRequired) {
+            const value =
+              input.type === "checkbox" ? input.checked : input.value.trim();
+            if (!value) {
+              allValid = false;
+              input.classList.add("field-error");
+              if (
+                !input.nextElementSibling ||
+                !input.nextElementSibling.classList.contains("error-msg")
+              ) {
+                debugger;
+                input.nextElementSibling.style.display = "block";
+              }
+            } else {
+              const msg = input.nextElementSibling;
+              if (
+                msg &&
+                msg.classList.contains("error-msg") &&
+                msg.style.display == "block"
+              ) {
+                msg.style.display == "none";
+              }
+            }
+          }
+        });
+
+        if (allValid) {
+          if (index < steps.length - 1) {
+            step.style.display = "none";
+            steps[index + 1].style.display = "block";
+          } else {
+            form.submit(); // Last step
+          }
+        }
+      });
+    }
+  });
+}
 
 export default async function decorate(block) {
   const formLink = block.querySelector("a[href]").getAttribute("href");
@@ -132,14 +288,17 @@ export default async function decorate(block) {
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
   const queryParamFormLink = `${formLink}`;
-  const form = await createForm(queryParamFormLink);
+  // const form = await createForm(queryParamFormLink);
+
+  const form = await createFormMulti(queryParamFormLink);
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
   const outPutDiv = await createOutputDiv();
   mainWrapper.appendChild(outPutDiv);
   block.replaceChildren(mainWrapper);
 
-  const emi = await calculateEMI();
-  const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
-  inputEventRegeister();
+  // const emi = await calculateEMI();
+  // const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
+  // inputEventRegeister();
+  enableStepNavigation(form);
 }

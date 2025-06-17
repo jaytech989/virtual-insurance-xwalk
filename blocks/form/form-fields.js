@@ -308,6 +308,50 @@ const createRangeLimit = (fd) => {
   });
   return rangeLimitDiv;
 };
+const createButton = (fd) => {
+  const field = document.createElement("button");
+  // field.type = fd.Type;
+  setCommonAttributes(field, fd);
+field.textContent=fd.Value
+  const fieldWrapper = createFieldWrapper(fd);
+  // const label = createLabel(fd);
+  // field.setAttribute("aria-labelledby", label.id);
+  // fieldWrapper.append(label);
+  fieldWrapper.append(field);
+  // if ((fd.Mandatory = "true")) {
+  //   const { errField } = createErrMsg(fd);
+  //   fieldWrapper.append(errField);
+  // }
+
+  return { field, fieldWrapper };
+};
+
+const createInputButton = (fd) => {
+  const field = document.createElement("input");
+  field.type = fd.Type;
+  field.value=fd.Label? fd.Label:fd.Value
+  setCommonAttributes(field, fd);
+
+  const fieldWrapper = createFieldWrapper(fd);
+  // const label = createLabel(fd);
+  // field.setAttribute("aria-labelledby", label.id);
+  // fieldWrapper.append(label);
+  fieldWrapper.append(field);
+  // if ((fd.Mandatory = "true")) {
+  //   const { errField } = createErrMsg(fd);
+  //   fieldWrapper.append(errField);
+  // }
+
+  return { field, fieldWrapper };
+};
+const createMultiStepForm = (fd) => {
+  debugger
+  const fieldWrapper = createFieldWrapper(fd);
+ debugger
+  // Optionally add an ID or class
+ //  button.id = 'myButton';
+   return {fieldWrapper};
+ };
 
 const FIELD_CREATOR_FUNCTIONS = {
   select: createSelect,
@@ -323,6 +367,8 @@ const FIELD_CREATOR_FUNCTIONS = {
   range: createRange,
   label: createLabel,
   calrange: createCalculatorRange,
+  button:createInputButton,
+  multistep:createMultiStepForm
 };
 
 export default async function createField(fd, form) {

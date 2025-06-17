@@ -1163,6 +1163,60 @@
     ]
   },
   {
+    "id": "form-with-bannerv2",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Form Options",
+        "description": "",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "Heading1",
+        "value": "",
+        "label": "Heading1",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "Heading3",
+        "value": "",
+        "label": "Heading3",
+        "valueType": "string",
+        "multi": true
+      },
+      {
+        "component": "aem-content",
+        "name": "cf-path",
+        "label": "Content Fragment Path",
+        "rootPath": "/content/dam/bandhan-ue-demo"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "rootPath": "/content/dam/bandhan-life-ue-demo"
+      },
+      {
+        "component": "aem-content",
+        "name": "formpath",
+        "label": "Form Path"
+      }
+    ]
+  },
+  {
     "id": "formdemo",
     "fields": [
       {

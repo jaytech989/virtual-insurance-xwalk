@@ -418,6 +418,21 @@
           }
         },
         {
+          "title": "Form with Bannerv2",
+          "id": "form-with-bannerv2",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Form with Bannerv2",
+                  "model": "form-with-bannerv2"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "FormDemo",
           "id": "formdemo",
           "plugins": {

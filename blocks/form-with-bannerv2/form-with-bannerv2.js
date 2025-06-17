@@ -1,5 +1,9 @@
 import { createOptimizedPicture } from "../../scripts/aem.js";
-import { isAuthorEnvironment, moveInstrumentation } from "../../scripts/scripts.js";
+import {
+  isAuthorEnvironment,
+  moveInstrumentation,
+} from "../../scripts/scripts.js";
+import createField from "../form/form-fields.js";
 
 function initFormHandler() {
   // Current step tracking
@@ -257,594 +261,210 @@ async function fetchData(url) {
   }
 }
 
+function enableStepNavigation(form) {
+  debugger;
+  const steps = form.querySelectorAll(".form-step");
 
-export default function decorate(block) {
-  let path="";
-    let headingCf=""
-    let newImg="";
-  const blockImg = block.children[10]
-  if(blockImg){
-    const img=blockImg.querySelector("picture > img");
-    const optimizedPic = createOptimizedPicture(img.src, 'image with alt', false, [
-      { width: "750" },
-    ]);
-    moveInstrumentation(img, optimizedPic.querySelector("img"));
-    img.closest("picture").replaceWith(optimizedPic);
-    newImg = optimizedPic
-      .querySelector("picture > img")
-      .getAttribute("src");
+  steps.forEach((step, index) => {
+    const submitBtn = step.querySelector(
+      'button[type="submit"], button.next-cta, button[name="nex-xta"]'
+    );
+
+    if (submitBtn) {
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const inputs = step.querySelectorAll("input, select, textarea");
+        let allValid = true;
+
+        inputs.forEach((input) => {
+          debugger;
+          const isRequired =
+            input.hasAttribute("required") ||
+            input.getAttribute("mandatory") === "true";
+
+          // Reset any previous error
+          input.classList.remove("field-error");
+
+          if (isRequired) {
+            const value =
+              input.type === "checkbox" ? input.checked : input.value.trim();
+            if (!value) {
+              debugger;
+              allValid = false;
+              input.classList.add("field-error");
+              if (
+                !input.nextElementSibling ||
+                !input.nextElementSibling.classList.contains("error-msg")
+              ) {
+                debugger;
+                input.nextElementSibling.style.display = "block";
+              }
+            } else {
+              debugger;
+              const msg = input.nextElementSibling;
+              if (msg && msg.style.display == "block") {
+                msg.style.display == "none";
+              }
+            }
+          }
+        });
+
+        if (allValid) {
+          if (index < steps.length - 1) {
+            step.style.display = "none";
+            steps[index + 1].style.display = "block";
+          } else {
+            form.submit(); // Last step
+          }
+        }
+      });
+    }
+  });
+}
+async function createFormMulti(formHref) {
+  const resp = await fetch(formHref);
+  const json = await resp.json();
+
+  const form = document.createElement("div");
+  // form.dataset.action = formHref.split(".json")[0];
+
+  // Optional: Replace h1 with h4
+  const h1element = document.getElementById("form-headline-1");
+  if (h1element) {
+    const h4element = document.createElement("h4");
+    h4element.innerHTML = h1element.innerHTML;
+    h1element.replaceWith(h4element);
+    h4element.classList.add("form-headline-4");
   }
 
+  // Group fields by Steppart
+  const stepMap = {};
+  json.data.forEach((item) => {
+    const stepKey = `step${item.Steppart}`;
+    if (!stepMap[stepKey]) {
+      stepMap[stepKey] = [];
+    }
+    stepMap[stepKey].push(item);
+  });
 
+  const stepKeys = Object.keys(stepMap);
+  const totalSteps = stepKeys.length;
 
-  const mainHead = block.children[0].textContent.trim();
-  // const head1 = block.children[1].textContent.trim();
-  const head2 = block.children[1].textContent.trim();
-  const genderOpt = block.children[2].textContent.trim().split(",");
+  // Create step containers
+  for (let i = 0; i < totalSteps; i++) {
+    const stepKey = stepKeys[i];
+    const stepWrapper = document.createElement("form");
+    stepWrapper.classList.add("form-step");
+    stepWrapper.id = stepKey;
+    stepWrapper.dataset.stepIndex = i;
+    if (i !== 0) stepWrapper.style.display = "none";
 
-  const labellist = block.children[3].textContent.trim().split(","); // First child = labels
-  const inputValue = block.children[4].textContent.trim().split(","); // Second child = placeholders
+    // 👉 Stepper guide element
+    const stepper = document.createElement("div");
+    stepper.classList.add("stepper-guide");
+    stepper.textContent = `Step ${i + 1} of ${totalSteps}`;
+    stepWrapper.appendChild(stepper);
 
-  // const formLabel=block.children[4].textContent.trim();
-  // const fromValue=block.children[5].textContent.trim();
-
-  const disc = block.children[5].textContent.trim().split(",");
-  const ctaText = block.children[6].textContent.trim();
-  const tellMeOcc = block.children[7].textContent.trim();
-  const occopt = block.children[8].textContent.trim().split(",");
-  const blockLink = block.children[9];
-  if(blockLink){
-
-    const link=blockLink.querySelector("a");
-      path = link ? link.getAttribute("href") : block.textContent.trim();
-
-  }
-  // //   const link = cfPath.
-
-  //   console.log("img",block.children[10].children[0].childNodes[0].firstChild.attributes[0].nodeValue);
-
-  const container = document.createElement("div");
-  container.setAttribute("class", "container");
-
-  const divEl = document.createElement("div");
-  divEl.setAttribute("class", "cmp-form-banner-container");
-
-  const divEl2 = document.createElement("div");
-  divEl2.setAttribute("class", "investment-form-container");
-
-  const divEl3 = document.createElement("div");
-  divEl3.setAttribute("class", "form-header");
-
-  const divEl4 = document.createElement("div");
-  divEl4.setAttribute("class", "disclaimer");
-  divEl4.setAttribute("id", "disclaimer");
-  divEl4.textContent = headingCf;
-  divEl3.append(divEl4);
-
-  const h1El = document.createElement("h1");
-  // h1El.setAttribute("id", "cf-heading");
-
-  h1El.append(mainHead);
-  const spanEl = document.createElement("span");
-  spanEl.setAttribute("class", "new-tag");
-  spanEl.textContent = "New";
-  h1El.append(spanEl);
-  divEl3.append(h1El);
-
-  const h2El = document.createElement("h2");
-  h2El.textContent = head2;
-  divEl3.append(h2El);
-  divEl2.append(divEl3);
-
-  const divEl5 = document.createElement("div");
-  divEl5.setAttribute("class", "multi-step-form");
-
-  const divEl6 = document.createElement("div");
-  divEl6.setAttribute("class", "step-indicators");
-
-  const divEl7 = document.createElement("div");
-  divEl7.setAttribute("class", "progress-bar");
-  divEl6.append(divEl7);
-
-  const divEl8 = document.createElement("div");
-  divEl8.setAttribute("class", "step active");
-  divEl8.setAttribute("data-step", "1");
-  divEl6.append(divEl8);
-
-  const divEl9 = document.createElement("div");
-  divEl9.setAttribute("class", "step");
-  divEl9.setAttribute("data-step", "2");
-  divEl6.append(divEl9);
-
-  const divEl10 = document.createElement("div");
-  divEl10.setAttribute("class", "step");
-  divEl10.setAttribute("data-step", "3");
-  divEl6.append(divEl10);
-  divEl5.append(divEl6);
-
-  const divEl11 = document.createElement("div");
-  divEl11.setAttribute("class", "form-step");
-  divEl11.setAttribute("id", "step1");
-
-  const divEl12 = document.createElement("div");
-  divEl12.setAttribute("class", "step-header");
-
-  const buttonEl = document.createElement("button");
-  buttonEl.setAttribute("class", "back-button");
-  buttonEl.setAttribute("style", "visibility: hidden;");
-
-  const spanEl2 = document.createElement("span");
-  spanEl2.setAttribute("class", "arrow-icon");
-  spanEl2.textContent = "←";
-  buttonEl.append(spanEl2);
-  divEl12.append(buttonEl);
-
-  // const h3El = document.createElement('h3');
-  // h3El.textContent = 'Enter your personal details';
-  // divEl12.append(h3El);
-  // divEl11.append(divEl12);
-
-  const h3El2 = document.createElement("h3");
-  h3El2.textContent = "Gender";
-  
-
-  //gender div
-  const divEl13 = document.createElement("div");
-  divEl13.setAttribute("class", "gender-options");
-
-  const genderButtonsArr = block.children[2].textContent.trim().split(",").filter(n => n);
-
-    genderButtonsArr.forEach((labelText, index) => {
-      const btn = document.createElement("button");
-
-      btn.classList.add("gender-option");
-
-      // const label = document.createElement("label");
-      // const input = document.c
-      // reateElement("input");
-      // buttonEl2.textContent = 'Male';
-
-      // // Setup input
-      // input.type = "text";
-      // input.placeholder = inputValue[index] || "";
-      // input.name = `input${index}`;
-      // input.id = `input${index}`;
-
-      // // Setup label
-      // label.htmlFor = input.id;
-      btn.textContent = labelText.trim();
-
-      // Append label and input into the inner div
-
-      // Append inner div to the form
-      divEl13.appendChild(btn);
+    // Create and append fields
+    const fields = await Promise.all(
+      stepMap[stepKey].map((fd) => createField(fd, form))
+    );
+    fields.forEach((field) => {
+      if (field) stepWrapper.appendChild(field);
     });
 
-  if(genderButtonsArr.length) {
-    divEl11.append(h3El2);
-    divEl11.append(divEl13);
+    form.appendChild(stepWrapper);
   }
-
-  //   const buttonEl2 = document.createElement('button');
-  //   buttonEl2.setAttribute('class', 'gender-option selected');
-  //   buttonEl2.textContent = 'Male';
-  //   divEl13.append(buttonEl2);
-
-  //   const buttonEl3 = document.createElement('button');
-  //   buttonEl3.setAttribute('class', 'gender-option');
-  //   buttonEl3.textContent = 'Female';
-  //   divEl13.append(buttonEl3);
-
-  //   const buttonEl4 = document.createElement('button');
-  //   buttonEl4.setAttribute('class', 'gender-option ');
-  //   buttonEl4.textContent = 'Others';
-
-  //   divEl13.append(buttonEl4);
-  //   divEl11.append(divEl13);
-
-  const divEl14 = document.createElement("div");
-  divEl14.setAttribute("class", "form-row");
-
-  const divEl15 = document.createElement("div");
-  divEl15.setAttribute("class", "form-group");
-
-  labellist.forEach((labelText, index) => {
-    const divEl15 = document.createElement("div");
-    divEl15.setAttribute("class", "form-group");
-    // const innerdiv = document.createElement("div");
-    // innerdiv.classList.add("innerform");
-
-    const label = document.createElement("label");
-    const input = document.createElement("input");
-
-    // Setup input
-    input.type = "text";
-    input.placeholder = inputValue[index] || "";
-    input.name = `input${index}`;
-    input.id = `input${index}`;
-
-    // Setup label
-    label.htmlFor = input.id;
-    label.textContent = labelText.trim();
-
-    // Append label and input into the inner div
-    divEl15.appendChild(label);
-    divEl15.appendChild(input);
-    divEl14.append(divEl15);
-
-    // Append inner div to the form
-  });
-  //   divEl14.append(divEl15);
-
-  divEl11.append(divEl14);
-
-  //   const labelEl = document.createElement('label');
-  //   labelEl.setAttribute('for', 'age');
-  //   labelEl.textContent = 'Age (As per PAN)';
-  //   divEl15.append(labelEl);
-
-  //   const inputEl = document.createElement('input');
-  //   inputEl.setAttribute('type', 'text');
-  //   inputEl.setAttribute('id', 'age');
-  //   inputEl.setAttribute('placeholder', '21Yrs (04-03-2004)');
-  //   inputEl.setAttribute('value', '21Yrs (04-03-2004)');
-  //   divEl15.append(inputEl);
-  //   divEl14.append(divEl15);
-
-  //   const divEl16 = document.createElement('div');
-  //   divEl16.setAttribute('class', 'form-group');
-
-  //   const labelEl2 = document.createElement('label');
-  //   labelEl2.setAttribute('for', 'mobile');
-  //   labelEl2.textContent = 'Mobile Number (We Don\'t Spam)';
-  //   divEl16.append(labelEl2);
-
-  //   const divEl17 = document.createElement('div');
-  //   divEl17.setAttribute('class', 'mobile-input');
-
-  //   const spanEl3 = document.createElement('span');
-  //   spanEl3.setAttribute('class', 'country-code');
-  //   spanEl3.textContent = '+91';
-  //   divEl17.append(spanEl3);
-
-  //   const inputEl2 = document.createElement('input');
-  //   inputEl2.setAttribute('type', 'tel');
-  //   inputEl2.setAttribute('id', 'mobile');
-  //   inputEl2.setAttribute('placeholder', '7788556699');
-  //   inputEl2.setAttribute('value', '7788556699');
-  //   divEl17.append(inputEl2);
-  //   divEl16.append(divEl17);
-  //   divEl14.append(divEl16);
-  //   divEl11.append(divEl14);
-
-  //   const divEl18 = document.createElement('div');
-  //   divEl18.setAttribute('class', 'form-row');
-
-  //   const divEl19 = document.createElement('div');
-  //   divEl19.setAttribute('class', 'form-group');
-
-  //   const labelEl3 = document.createElement('label');
-  //   labelEl3.setAttribute('for', 'amount');
-  //   labelEl3.textContent = 'Amount';
-  //   divEl19.append(labelEl3);
-
-  //   const inputEl3 = document.createElement('input');
-  //   inputEl3.setAttribute('type', 'text');
-  //   inputEl3.setAttribute('id', 'amount');
-  //   inputEl3.setAttribute('value', '₹9,87,656');
-  //   divEl19.append(inputEl3);
-  //   divEl18.append(divEl19);
-
-  //   const divEl20 = document.createElement('div');
-  //   divEl20.setAttribute('class', 'form-group');
-
-  //   const labelEl4 = document.createElement('label');
-  //   labelEl4.setAttribute('for', 'frequency');
-  //   labelEl4.textContent = 'Frequency';
-  //   divEl20.append(labelEl4);
-
-  //   const divEl21 = document.createElement('div');
-  //   divEl21.setAttribute('class', 'select-wrapper');
-
-  //   const selectEl = document.createElement('select');
-  //   selectEl.setAttribute('id', 'frequency');
-
-  //   const optionEl = document.createElement('option');
-  //   optionEl.setAttribute('value', 'yearly');
-  //   optionEl.textContent = 'Yearly';
-  //   selectEl.append(optionEl);
-
-  //   const optionEl2 = document.createElement('option');
-  //   optionEl2.setAttribute('value', 'half-yearly');
-  //   optionEl2.textContent = 'Half-Yearly';
-  //   selectEl.append(optionEl2);
-
-  //   const optionEl3 = document.createElement('option');
-  //   optionEl3.setAttribute('value', 'quarterly');
-  //   optionEl3.textContent = 'Quarterly';
-  //   selectEl.append(optionEl3);
-
-  //   const optionEl4 = document.createElement('option');
-  //   optionEl4.setAttribute('value', 'monthly');
-  //   optionEl4.textContent = 'Monthly';
-  //   selectEl.append(optionEl4);
-  //   divEl21.append(selectEl);
-
-  //   const divEl22 = document.createElement('div');
-  //   divEl22.setAttribute('class', 'select-arrow');
-  //   divEl22.textContent = '▼';
-  //   divEl21.append(divEl22);
-  //   divEl20.append(divEl21);
-  //   divEl18.append(divEl20);
-  //   divEl11.append(divEl18);
-
-  const divEl23 = document.createElement("div");
-  divEl23.setAttribute("class", "consent-section");
-
-  const divEl24 = document.createElement("div");
-  divEl24.setAttribute("class", "checkbox-group");
-
-  //   const inputEl4 = document.createElement('input');
-  //   inputEl4.setAttribute('type', 'checkbox');
-  //   inputEl4.setAttribute('id', 'bypass-consent');
-  //   inputEl4.setAttribute('checked', '');
-  //   divEl24.append(inputEl4);
-
-  //   const labelEl5 = document.createElement('label');
-  //   labelEl5.setAttribute('for', 'bypass-consent');
-
-  //   const aEl = document.createElement('a');
-  //   aEl.setAttribute('href', '#');
-  //   aEl.setAttribute('class', 'link');
-  //   aEl.textContent = 'suitability analysis';
-  //   labelEl5.append(aEl);
-  //   divEl24.append(labelEl5);
-  //   divEl23.append(divEl24);
-  const divEl25 = document.createElement("div");
-
-
-  disc.forEach(function (disctxt) {
-      const innerDiv = document.createElement("div");
-
-    innerDiv.setAttribute("class", "checkbox-group");
-
-    const inputEl5 = document.createElement("input");
-    inputEl5.setAttribute("type", "checkbox");
-    inputEl5.setAttribute("id", "contact-consent");
-    inputEl5.setAttribute("checked", "");
-    innerDiv.append(inputEl5);
-
-    const labelEl6 = document.createElement("label");
-    labelEl6.setAttribute("for", "contact-consent");
-    labelEl6.textContent = disctxt;
-    innerDiv.append(labelEl6);
-    divEl25.append(innerDiv);
-
-    
+  debugger;
+  const fieldsets = form.querySelectorAll("fieldset");
+  fieldsets.forEach((fieldset) => {
+    form
+      .querySelectorAll(`[data-fieldset="${fieldset.name}"`)
+      .forEach((field) => {
+        fieldset.append(field);
+      });
   });
 
-  divEl23.append(divEl25);
-  divEl11.append(divEl23);
+  return form;
+}
 
-  const divEl26 = document.createElement("div");
-  divEl26.setAttribute("class", "button-container");
-
-  const buttonEl5 = document.createElement("button");
-  buttonEl5.setAttribute("class", "next-button");
-  buttonEl5.setAttribute("id", "step1Next");
-  buttonEl5.textContent = ctaText;
-  divEl26.append(buttonEl5);
-  divEl11.append(divEl26);
-  divEl5.append(divEl11);
-
-  const divEl27 = document.createElement("div");
-  divEl27.setAttribute("class", "form-step");
-  divEl27.setAttribute("id", "step3");
-  divEl27.setAttribute("style", "display: none;");
-
-  const divEl28 = document.createElement("div");
-  divEl28.setAttribute("class", "step-header");
-  divEl27.setAttribute("style", "display: block;");
-
-  const buttonEl6 = document.createElement("button");
-  buttonEl6.setAttribute("class", "back-button");
-
-  const spanEl4 = document.createElement("span");
-  spanEl4.setAttribute("class", "arrow-icon");
-  spanEl4.textContent = "←";
-  buttonEl6.append(spanEl4);
-  divEl28.append(buttonEl6);
-
-  const h3El3 = document.createElement("h3");
-  h3El3.textContent = tellMeOcc;
-  divEl28.append(h3El3);
-  divEl27.append(divEl28);
-
-  const divEl29 = document.createElement("div");
-  divEl29.setAttribute("class", "hazard-question");
-
-  const h4El = document.createElement("h4");
-  h4El.textContent =
-    "Is your occupation associated with any specific hazard or do you take part in activities that could be dangerous in any way?";
-  divEl29.append(h4El);
-
-  const pEl = document.createElement("p");
-  pEl.setAttribute("class", "examples");
-  pEl.textContent =
-    "(e.g. Heavy machines, chemical factory, mines explosives, radiation, etc.)";
-  divEl29.append(pEl);
-
-  const divEl30 = document.createElement("div");
-  divEl30.setAttribute("class", "hazard-options");
-
-  const buttonEl7 = document.createElement("button");
-  buttonEl7.setAttribute("class", "option-button");
-  buttonEl7.setAttribute("data-hazard", "yes");
-  buttonEl7.textContent = "Yes";
-  divEl30.append(buttonEl7);
-
-  const buttonEl8 = document.createElement("button");
-  buttonEl8.setAttribute("class", "option-button");
-  buttonEl8.setAttribute("data-hazard", "no");
-  buttonEl8.textContent = "No";
-  divEl30.append(buttonEl8);
-  divEl29.append(divEl30);
-  divEl27.append(divEl29);
-  divEl5.append(divEl27);
-
-  const divEl31 = document.createElement("div");
-  divEl31.setAttribute("class", "form-step");
-  divEl31.setAttribute("id", "step2");
-  divEl31.setAttribute("style", "display: none;");
-
-  const divEl32 = document.createElement("div");
-  divEl32.setAttribute("class", "step-header");
-  divEl31.setAttribute("style", "display: block;");
-
-  const buttonEl9 = document.createElement("button");
-  buttonEl9.setAttribute("class", "back-button");
-
-  const spanEl5 = document.createElement("span");
-  spanEl5.setAttribute("class", "arrow-icon");
-  spanEl5.textContent = "←";
-  buttonEl9.append(spanEl5);
-  divEl32.append(buttonEl9);
-
-  const h3El4 = document.createElement("h3");
-  h3El4.textContent = tellMeOcc;
-  divEl32.append(h3El4);
-  divEl31.append(divEl32);
-
-  const divEl33 = document.createElement("div");
-  divEl33.setAttribute("class", "occupation-options");
-
-  const divEl34 = document.createElement("div");
-  divEl34.setAttribute("class", "option-row opt-row");
-
-  occopt.forEach(function (occopt, index) {
-    const buttonEl10 = document.createElement("button");
-    buttonEl10.setAttribute("class", "option-button opt-btn");
-    buttonEl10.textContent = occopt;
-    divEl34.append(buttonEl10);
-  });
-
-  // divEl36.append(buttonEl17);
-  divEl33.append(divEl34);
-  divEl31.append(divEl33);
-
-  // const buttonEl10 = document.createElement('button');
-  // buttonEl10.setAttribute('class', 'option-button');
-  // buttonEl10.textContent = 'Salaried';
-  // divEl34.append(buttonEl10);
-
-  // const buttonEl11 = document.createElement('button');
-  // buttonEl11.setAttribute('class', 'option-button');
-  // buttonEl11.textContent = 'Armed forces / Police';
-  // divEl34.append(buttonEl11);
-
-  // const buttonEl12 = document.createElement('button');
-  // buttonEl12.setAttribute('class', 'option-button');
-  // buttonEl12.textContent = 'Agriculturist';
-  // divEl34.append(buttonEl12);
-  // divEl33.append(divEl34);
-
-  // const divEl35 = document.createElement('div');
-  // divEl35.setAttribute('class', 'option-row');
-
-  // const buttonEl13 = document.createElement('button');
-  // buttonEl13.setAttribute('class', 'option-button');
-  // buttonEl13.textContent = 'Student';
-  // divEl35.append(buttonEl13);
-
-  // const buttonEl14 = document.createElement('button');
-  // buttonEl14.setAttribute('class', 'option-button selected');
-  // buttonEl14.textContent = 'Worker/labour';
-  // divEl35.append(buttonEl14);
-
-  // const buttonEl15 = document.createElement('button');
-  // buttonEl15.setAttribute('class', 'option-button');
-  // buttonEl15.textContent = 'Retired /Pensioners';
-  // divEl35.append(buttonEl15);
-  // divEl33.append(divEl35);
-
-  // const divEl36 = document.createElement('div');
-  // divEl36.setAttribute('class', 'option-row');
-
-  // const buttonEl16 = document.createElement('button');
-  // buttonEl16.setAttribute('class', 'option-button');
-  // buttonEl16.textContent = 'Self-employed (Professional)';
-  // divEl36.append(buttonEl16);
-
-  // const buttonEl17 = document.createElement('button');
-  // buttonEl17.setAttribute('class', 'option-button');
-  // buttonEl17.textContent = 'Self-employed (Business)';
-  // divEl36.append(buttonEl17);
-  // divEl33.append(divEl36);
-  // divEl31.append(divEl33);
-
-  const divEl37 = document.createElement("div");
-  divEl37.setAttribute("class", "button-container");
-
-  const buttonEl18 = document.createElement("button");
-  buttonEl18.setAttribute("class", "submit-button");
-  buttonEl18.textContent = "See My Returns";
-  divEl37.append(buttonEl18);
-  divEl31.append(divEl37);
-  divEl5.append(divEl31);
-  divEl2.append(divEl5);
-  divEl.append(divEl2);
-
-  const divEl38 = document.createElement("div");
-  divEl38.setAttribute("class", "cmp-form-banner-image");
-
-  const pictureEl = document.createElement("picture");
-  pictureEl.setAttribute("class", "banner-image style2");
-
-  const sourceEl = document.createElement("source");
-  sourceEl.setAttribute("media", "(max-width:768px)");
-  sourceEl.setAttribute("srcset", newImg);
-  pictureEl.append(sourceEl);
-
-  const sourceEl2 = document.createElement("source");
-  sourceEl2.setAttribute("media", "(min-width:768px)");
-  sourceEl2.setAttribute("srcset", newImg);
-  pictureEl.append(sourceEl2);
-
-  const imgEl = document.createElement("img");
-  imgEl.setAttribute("src", newImg);
-  imgEl.setAttribute("alt", "img");
-  imgEl.setAttribute("height", "650");
-  imgEl.setAttribute("width", "1069");
-  imgEl.setAttribute("loading", "lazy");
-  pictureEl.append(imgEl);
-  divEl38.append(pictureEl);
-  divEl.append(divEl38);
-  container.append(divEl);
-
-  block.textContent = "";
-  block.append(container);
-
-  initFormHandler();
-
-  (async () => {
-    try {
-      let domainUrl=""
-      // const envCheck=isAuthorEnvironment();
-      if(isAuthorEnvironment()){
-
-        domainUrl= "https://author-p102857-e1312424.adobeaemcloud.com/graphql/execute.json/bandhan-ue-demo/bannerquery;path="+path+";variation=master"
-
-      }else{
-        domainUrl= "https://publish-p102857-e1312424.adobeaemcloud.com/graphql/execute.json/bandhan-ue-demo/bannerquery;path="+path+";variation=master"
-
-      }
-
-      const resp = await fetchData(domainUrl);
-      console.log("Final Response:", resp.data.bannerTextByPath.item.bannerText);
-       headingCf = resp.data.bannerTextByPath.item.bannerText;
-       document.getElementById("disclaimer").append(headingCf);
-    } catch (err) {
-      console.error("Error during fetchData call:", err);
+async function callCFApi(path) {
+  try {
+    let domainUrl = "";
+    // const envCheck=isAuthorEnvironment();
+    if (isAuthorEnvironment()) {
+      domainUrl =
+        "https://author-p102857-e1312424.adobeaemcloud.com/graphql/execute.json/bandhan-ue-demo/bannerquery;path=" +
+        path +
+        ";variation=master";
+    } else {
+      domainUrl =
+        "https://publish-p102857-e1312424.adobeaemcloud.com/graphql/execute.json/bandhan-ue-demo/bannerquery;path=" +
+        path +
+        ";variation=master";
     }
-  })();
+
+    const resp = await fetchData(domainUrl);
+    console.log("Final Response:", resp.data.bannerTextByPath.item.bannerText);
+    const headingCf = resp.data.bannerTextByPath.item.bannerText;
+    //  document.getElementById("disclaimer").append(headingCf);
+    return headingCf;
+  } catch (err) {
+    console.error("Error during fetchData call:", err);
+  }
+}
+export default async function decorate(block) {
+  debugger;
+  const heading = block.children[0];
+  const subHeading = block.children[1];
+  const img = block.children[3];
+  const contenntSection = document.createElement("div");
+  contenntSection.classList.add("investment-form-container");
+  const imageSectionn = document.createElement("div");
+  imageSectionn.classList.add("cmp-img");
+
+  const formLink = block.children[4]
+    .querySelector("a[href]")
+    .getAttribute("href");
+  const cfPath = block.children[2]
+    .querySelector("a[href]")
+    .getAttribute("href");
+  const disclaimer = await callCFApi(cfPath);
+  // block.children[2].textContent = disclaimer ? disclaimer : "";
+  console.log(disclaimer);
+
+  const mainWrapper = document.createElement("div");
+  mainWrapper.classList.add("mainwrapper");
+  const inputDiv = document.createElement("div");
+  inputDiv.classList.add("inputdiv");
+  const queryParamFormLink = `${formLink}`;
+  const form = await createFormMulti(queryParamFormLink);
+  inputDiv.appendChild(form);
+  mainWrapper.appendChild(inputDiv);
+  block.children[4].remove();
+  // const outPutDiv = await createOutputDiv();
+  // mainWrapper.appendChild(outPutDiv);
+
+  //   block.forEach((block)=>{
+  // block.querySelector("picture")
+
+  //   })
+  debugger;
+  contenntSection.appendChild(heading);
+  contenntSection.appendChild(subHeading);
+
+  contenntSection.append(disclaimer);
+  contenntSection.append(mainWrapper);
+  imageSectionn.append(img);
+
+  const outerWrapperMain = document.createElement("div");
+  outerWrapperMain.classList.add("main-container");
+  outerWrapperMain.appendChild(contenntSection);
+  outerWrapperMain.appendChild(imageSectionn);
+
+  block.replaceWith(outerWrapperMain);
+  // block.append(imageSectionn);
+
+  enableStepNavigation(form);
 }

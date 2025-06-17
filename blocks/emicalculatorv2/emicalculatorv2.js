@@ -91,7 +91,7 @@ async function createFormMulti(formHref) {
 
     form.appendChild(stepWrapper);
   }
-  debugger;
+ 
   const fieldsets = form.querySelectorAll("fieldset");
   fieldsets.forEach((fieldset) => {
     form
@@ -218,7 +218,6 @@ async function inputEventRegeister() {
 //   });
 // }
 function enableStepNavigation(form) {
-  debugger;
   const steps = form.querySelectorAll(".form-step");
 
   steps.forEach((step, index) => {
@@ -234,7 +233,7 @@ function enableStepNavigation(form) {
         let allValid = true;
 
         inputs.forEach((input) => {
-          debugger;
+          
           const isRequired =
             input.hasAttribute("required") ||
             input.getAttribute("mandatory") === "true";
@@ -252,7 +251,7 @@ function enableStepNavigation(form) {
                 !input.nextElementSibling ||
                 !input.nextElementSibling.classList.contains("error-msg")
               ) {
-                debugger;
+                
                 input.nextElementSibling.style.display = "block";
               }
             } else {

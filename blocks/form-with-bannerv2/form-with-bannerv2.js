@@ -262,7 +262,7 @@ async function fetchData(url) {
 }
 
 function enableStepNavigation(form) {
-  debugger;
+  
   const steps = form.querySelectorAll(".form-step");
 
   steps.forEach((step, index) => {
@@ -278,7 +278,7 @@ function enableStepNavigation(form) {
         let allValid = true;
 
         inputs.forEach((input) => {
-          debugger;
+          
           const isRequired =
             input.hasAttribute("required") ||
             input.getAttribute("mandatory") === "true";
@@ -290,18 +290,18 @@ function enableStepNavigation(form) {
             const value =
               input.type === "checkbox" ? input.checked : input.value.trim();
             if (!value) {
-              debugger;
+              
               allValid = false;
               input.classList.add("field-error");
               if (
                 !input.nextElementSibling ||
                 !input.nextElementSibling.classList.contains("error-msg")
               ) {
-                debugger;
+                
                 input.nextElementSibling.style.display = "block";
               }
             } else {
-              debugger;
+              
               const msg = input.nextElementSibling;
               if (msg && msg.style.display == "block") {
                 msg.style.display == "none";
@@ -376,7 +376,7 @@ async function createFormMulti(formHref) {
 
     form.appendChild(stepWrapper);
   }
-  debugger;
+  
   const fieldsets = form.querySelectorAll("fieldset");
   fieldsets.forEach((fieldset) => {
     form
@@ -415,7 +415,7 @@ async function callCFApi(path) {
   }
 }
 export default async function decorate(block) {
-  debugger;
+  
   const heading = block.children[0];
   const subHeading = block.children[1];
   const img = block.children[3];
@@ -450,7 +450,7 @@ export default async function decorate(block) {
   // block.querySelector("picture")
 
   //   })
-  debugger;
+  
   contenntSection.appendChild(heading);
   contenntSection.appendChild(subHeading);
 

@@ -4,3 +4,130 @@
     color: red;
     font-size: 0.9em;
 }
+
+.bandhan-form-section .investment-form-container{
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+       background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    margin-right: 30px;
+}
+
+.bandhan-form-section .main-container {
+    display: flex;
+}
+
+.bandhan-form-section h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+.bandhan-form-section h2{
+    font-size: 20px;
+}
+
+.bandhan-form-section p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f4db3;
+    margin-bottom: 25px;
+    /* text-align: center; */
+}
+
+.bandhan-form-section .stepper-guide {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.bandhan-form-section fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bandhan-form-section legend {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bandhan-form-section .field-wrapper {
+    margin-bottom: 10px;
+}
+
+.bandhan-form-section input[type="number"],
+.bandhan-form-section input[type="text"],
+.bandhan-form-section input[type="tel"] {
+    width: 92%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.bandhan-form-section input[type="button"] {
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-right: 10px;
+}
+
+.bandhan-form-section input[type="button"]:hover {
+    background-color: #1f4db3;
+    color: white;
+}
+
+.bandhan-form-section input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.bandhan-form-section label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.bandhan-form-section .checkbox-wrapper label {
+    display: inline-block;
+    font-size: 14px;
+    color: #222;
+}
+
+.bandhan-form-section .submit-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bandhan-form-section .button {
+    background-color: #1f4db3;
+    color: #fff;
+    font-size: 16px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.bandhan-form-section .button:hover {
+    background-color: #163a8d;
+}
+
+.bandhan-form-section .errorMsg {
+    font-size: 13px;
+    color: red;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .bandhan-form-section {
+        padding: 20px;
+    }
+}

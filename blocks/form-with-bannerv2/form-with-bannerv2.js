@@ -363,7 +363,7 @@ async function createFormMulti(formHref) {
     // 👉 Stepper guide element
     const stepper = document.createElement("div");
     stepper.classList.add("stepper-guide");
-    stepper.textContent = `Step ${i + 1} of ${totalSteps}`;
+    stepper.textContent = `Step ${i + 1}`; // of ${totalSteps}
     stepWrapper.appendChild(stepper);
 
     // Create and append fields

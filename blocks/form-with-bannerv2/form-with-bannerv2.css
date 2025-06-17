@@ -1,16 +1,20 @@
 .investment-form-container span.errorMsg {
-
     display: none;
     color: red;
     font-size: 0.9em;
 }
 
-.bandhan-form-section .investment-form-container{
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-       background: #fff;
+.bandhan-form-section .investment-form-container {
+    margin-right: 30px;
+    width: 60%;
+}
+
+.bandhan-form-section .form-step {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    background: #fff;
     padding: 30px;
     border-radius: 16px;
-    margin-right: 30px;
+    margin-top: 8px;
 }
 
 .bandhan-form-section .main-container {
@@ -18,12 +22,13 @@
 }
 
 .bandhan-form-section h1 {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 700;
     color: #1a1a1a;
     margin: 0;
 }
-.bandhan-form-section h2{
+
+.bandhan-form-section h2 {
     font-size: 20px;
 }
 
@@ -39,12 +44,13 @@
     font-weight: 600;
     margin-bottom: 10px;
     color: #444;
+    text-align: center;
 }
 
 .bandhan-form-section fieldset {
     border: none;
     padding: 0;
-    margin: 0 0 20px;
+    /* margin: 0 0 20px; */
     display: flex;
     justify-content: space-between;
 }
@@ -125,6 +131,13 @@
     color: red;
     display: none;
 }
+
+.bandhan-form-section .checkbox-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
 
 @media (max-width: 768px) {
     .bandhan-form-section {

@@ -159,9 +159,9 @@
   
   /* Step */
   .stepper .step {
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
-    padding: 10px 15px;
+    padding: 0px 10px;
     border-radius: 50px;
     background-color: #ddd;
     color: #888;
@@ -180,12 +180,12 @@
   
   /* Lines between steps */
   .stepper .step:not(:last-child)::after {
-    content: '';
+   content: '';
     position: absolute;
     top: 50%;
-    right: -50%;
-    width: 100%;
-    height: 4px;
+    left: 31px;
+    width: 158px;
+    height: 3px;
     background: #ccc;
     z-index: -1;
     transform: translateY(-50%);

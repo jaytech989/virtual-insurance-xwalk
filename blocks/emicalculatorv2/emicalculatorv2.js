@@ -287,17 +287,17 @@ export default async function decorate(block) {
   const inputDiv = document.createElement("div");
   inputDiv.classList.add("inputdiv");
   const queryParamFormLink = `${formLink}`;
-  // const form = await createForm(queryParamFormLink);
+  const form = await createForm(queryParamFormLink);
 
-  const form = await createFormMulti(queryParamFormLink);
+  // const form = await createFormMulti(queryParamFormLink);
   inputDiv.appendChild(form);
   mainWrapper.appendChild(inputDiv);
   const outPutDiv = await createOutputDiv();
   mainWrapper.appendChild(outPutDiv);
   block.replaceChildren(mainWrapper);
 
-  // const emi = await calculateEMI();
-  // const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
-  // inputEventRegeister();
-  enableStepNavigation(form);
+  const emi = await calculateEMI();
+  const sds = (block.getElementsByClassName("emiamount")[0].textContent = emi);
+  inputEventRegeister();
+  // enableStepNavigation(form);
 }

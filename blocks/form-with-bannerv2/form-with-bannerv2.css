@@ -139,13 +139,6 @@
 }
 
 
-@media (max-width: 768px) {
-    .bandhan-form-section {
-        padding: 20px;
-    }
-}
-
-
 /* Stepper Container */
 .stepper {
     display: flex;
@@ -155,10 +148,10 @@
     margin: 2em auto;
     padding: 0;
     position: relative;
-  }
-  
-  /* Step */
-  .stepper .step {
+}
+
+/* Step */
+.stepper .step {
     /* flex: 1; */
     text-align: center;
     padding: 0px 10px;
@@ -169,18 +162,18 @@
     font-weight: 500;
     z-index: 1;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  /* Active Step */
-  .stepper .step.active {
+}
+
+/* Active Step */
+.stepper .step.active {
     background-color: #007bff;
     color: #fff;
     font-weight: bold;
-  }
-  
-  /* Lines between steps */
-  .stepper .step:not(:last-child)::after {
-   content: '';
+}
+
+/* Lines between steps */
+.stepper .step:not(:last-child)::after {
+    content: '';
     position: absolute;
     top: 50%;
     left: 31px;
@@ -189,10 +182,24 @@
     background: #ccc;
     z-index: -1;
     transform: translateY(-50%);
-  }
-  
-  /* Line color for previous steps */
-  .stepper .step.active ~ .step::after {
+}
+
+/* Line color for previous steps */
+.stepper .step.active~.step::after {
     background: #eee;
-  }
-  
+}
+
+@media (max-width: 768px) {
+    .bandhan-form-section {
+        padding: 20px;
+    }
+
+    .bandhan-form-section .main-container {
+        flex-direction: column-reverse;
+    }
+
+    .bandhan-form-section .investment-form-container {
+        margin-right: 0;
+        width: 100%;
+    }
+}

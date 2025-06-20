@@ -12,7 +12,8 @@
    "/content/virtual-insurance-ue/spreadsheet/demo-emical:/spreadsheet/demo-emical.json",
    "/content/virtual-insurance-ue/spreadsheet/multi-step-form:/spreadsheet/multi-step-form.json",
    "/content/virtual-insurance-ue/spreadsheet/header:/spreadsheet/header.json",
-    "/content/virtual-insurance-ue/spreadsheet/FD-Cal:/spreadsheet/FD-Cal.json"
+    "/content/virtual-insurance-ue/spreadsheet/FD-Cal:/spreadsheet/FD-Cal.json",
+    "/content/virtual-insurance-ue/spreadsheet/fd-cal-two:/spreadsheet/fd-cal-two.json"
 
   ],
   "includes": [

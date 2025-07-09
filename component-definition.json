@@ -676,30 +676,9 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
-                "model": "vcards",
                 "template": {
-                  "vcards": [
-                    {
-                      "image": "/media/sample1.jpg",
-                      "label": "Starting Premium",
-                      "value": "₹276/month"
-                    },
-                    {
-                      "image": "/media/sample2.jpg",
-                      "label": "Network Hospital",
-                      "value": "16334"
-                    },
-                    {
-                      "image": "/media/sample3.jpg",
-                      "label": "PED Coverage",
-                      "value": "Covered after 3 yrs"
-                    },
-                    {
-                      "image": "/media/sample4.jpg",
-                      "label": "Sum Insured",
-                      "value": "Up to 1Cr"
-                    }
-                  ],
+                  "name": "vcards",
+                  "model": "vcards",
                   "heading": "Why Choose Virtual Health Insurance"
                 }
               }

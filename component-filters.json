@@ -178,5 +178,18 @@
     "components": [
       "topsearches"
     ]
+  },
+  {
+    "id": "vcards",
+    "components": [
+      "vcards-item",
+      "text"
+    ]
+  },
+  {
+    "id": "vcards-item",
+    "components": [
+      "text"
+    ]
   }
 ]

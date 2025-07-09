@@ -1710,37 +1710,44 @@
     "id": "vcards",
     "fields": [
       {
+        "component": "select",
+        "name": "classes",
+        "label": "vcards Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "vcards First",
+            "value": "vcards-first"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vcards-item",
+    "fields": [
+      {
         "component": "text",
-        "name": "heading",
-        "label": "Section Heading",
+        "name": "label",
+        "label": "vcards Title",
         "valueType": "string"
       },
       {
-        "component": "container",
-        "label": "Cards List",
-        "name": "cards",
-        "multi": true,
-        "collapsible": true,
-        "fields": [
-          {
-            "component": "image",
-            "name": "image",
-            "label": "Card Image",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "label",
-            "label": "Card Label",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "value",
-            "label": "Card Value",
-            "valueType": "string"
-          }
-        ]
+        "component": "richtext",
+        "name": "body",
+        "label": "vcards Content",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Embedded Image",
+        "valueType": "string",
+        "multi": true
       }
     ]
   }

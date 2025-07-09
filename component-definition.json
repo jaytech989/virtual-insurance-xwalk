@@ -672,7 +672,6 @@
         {
           "id": "vcards",
           "title": "vcards",
-          "model": "cards-model",
           "plugins": {
             "xwalk": {
               "page": {

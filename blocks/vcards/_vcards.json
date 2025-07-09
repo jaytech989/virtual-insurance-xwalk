@@ -3,7 +3,6 @@
     {
       "id": "vcards",
       "title": "vcards",
-      "model": "cards-model",
       "plugins": {
         "xwalk": {
           "page": {
@@ -40,7 +39,7 @@
   ],
   "models": [
     {
-      "id": "cards-model",
+      "id": "vcards",
       "fields": [
         {
           "component": "text",

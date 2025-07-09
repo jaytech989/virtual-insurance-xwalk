@@ -1707,7 +1707,7 @@
     ]
   },
   {
-    "id": "cards-model",
+    "id": "vcards",
     "fields": [
       {
         "component": "text",

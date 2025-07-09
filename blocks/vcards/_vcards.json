@@ -7,6 +7,7 @@
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
+            "model":"vcards",
             "template": {
               "vcards": [
                 {

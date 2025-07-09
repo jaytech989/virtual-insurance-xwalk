@@ -196,11 +196,7 @@
           {
             "name": "Common Form Section ",
             "value": "common-form-section"
-          },
-          {
-              "name": "Bandhan Form Section ",
-              "value": "bandhan-form-section"
-            }
+          }
         ]
       }
     ]
@@ -1707,6 +1703,44 @@
         "label": "AEM Tag Picker",
         "name": "toptags",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-model",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Section Heading",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "label": "Cards List",
+        "name": "cards",
+        "multi": true,
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "image",
+            "name": "image",
+            "label": "Card Image",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "label",
+            "label": "Card Label",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "value",
+            "label": "Card Value",
+            "valueType": "string"
+          }
+        ]
       }
     ]
   }
